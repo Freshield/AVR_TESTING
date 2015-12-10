@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "TEST27_TIMER1_SOUND_PLAY", "TEST27_TIMER1_SOUND_PLAY\TEST27_TIMER1_SOUND_PLAY.cppproj", "{0B95179D-282C-4392-8A99-77984926D144}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B95179D-282C-4392-8A99-77984926D144}.Debug|AVR.ActiveCfg = Debug|AVR
+		{0B95179D-282C-4392-8A99-77984926D144}.Debug|AVR.Build.0 = Debug|AVR
+		{0B95179D-282C-4392-8A99-77984926D144}.Release|AVR.ActiveCfg = Release|AVR
+		{0B95179D-282C-4392-8A99-77984926D144}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
