@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "TEST50_DS1302_LCD1602_SHOW_TIME", "TEST50_DS1302_LCD1602_SHOW_TIME\TEST50_DS1302_LCD1602_SHOW_TIME.cppproj", "{B8BE036D-B955-4577-B367-E24FA5A65386}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8BE036D-B955-4577-B367-E24FA5A65386}.Debug|AVR.ActiveCfg = Debug|AVR
+		{B8BE036D-B955-4577-B367-E24FA5A65386}.Debug|AVR.Build.0 = Debug|AVR
+		{B8BE036D-B955-4577-B367-E24FA5A65386}.Release|AVR.ActiveCfg = Release|AVR
+		{B8BE036D-B955-4577-B367-E24FA5A65386}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
