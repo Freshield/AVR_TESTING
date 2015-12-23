@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "TEST1_BLINK_LED", "TEST1_BLINK_LED\TEST1_BLINK_LED.cppproj", "{266C1EC5-64A9-4F7A-93DA-A7924231B124}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{266C1EC5-64A9-4F7A-93DA-A7924231B124}.Debug|AVR.ActiveCfg = Debug|AVR
+		{266C1EC5-64A9-4F7A-93DA-A7924231B124}.Debug|AVR.Build.0 = Debug|AVR
+		{266C1EC5-64A9-4F7A-93DA-A7924231B124}.Release|AVR.ActiveCfg = Release|AVR
+		{266C1EC5-64A9-4F7A-93DA-A7924231B124}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
