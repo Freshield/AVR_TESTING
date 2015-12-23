@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "TEST3_FLOW_ARRAY_LED", "TEST3_FLOW_ARRAY_LED\TEST3_FLOW_ARRAY_LED.cppproj", "{1F0D2235-A46F-4F18-B5E8-F2DFF15A87FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F0D2235-A46F-4F18-B5E8-F2DFF15A87FB}.Debug|AVR.ActiveCfg = Debug|AVR
+		{1F0D2235-A46F-4F18-B5E8-F2DFF15A87FB}.Debug|AVR.Build.0 = Debug|AVR
+		{1F0D2235-A46F-4F18-B5E8-F2DFF15A87FB}.Release|AVR.ActiveCfg = Release|AVR
+		{1F0D2235-A46F-4F18-B5E8-F2DFF15A87FB}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
