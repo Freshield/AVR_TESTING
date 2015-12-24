@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "TEST8_KEYBOARD_LED_MOVE", "TEST8_KEYBOARD_LED_MOVE\TEST8_KEYBOARD_LED_MOVE.cppproj", "{B84CECD8-33F7-4359-91F1-302E2C0433AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B84CECD8-33F7-4359-91F1-302E2C0433AF}.Debug|AVR.ActiveCfg = Debug|AVR
+		{B84CECD8-33F7-4359-91F1-302E2C0433AF}.Debug|AVR.Build.0 = Debug|AVR
+		{B84CECD8-33F7-4359-91F1-302E2C0433AF}.Release|AVR.ActiveCfg = Release|AVR
+		{B84CECD8-33F7-4359-91F1-302E2C0433AF}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
