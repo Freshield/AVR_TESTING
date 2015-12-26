@@ -1,0 +1,565 @@
+
+TEST14_INT0_COUNT.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000244  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000012  00800060  00000244  000002d8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000001  00800072  00800072  000002ea  2**0
+                  ALLOC
+  3 .stab         000006cc  00000000  00000000  000002ec  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000085  00000000  00000000  000009b8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_aranges 00000080  00000000  00000000  00000a40  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000586  00000000  00000000  00000ac0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000015a  00000000  00000000  00001046  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000002e2  00000000  00000000  000011a0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000013c  00000000  00000000  00001484  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000002dc  00000000  00000000  000015c0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000209  00000000  00000000  0000189c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 01 01 	jmp	0x202	; 0x202 <__vector_1>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e4 e4       	ldi	r30, 0x44	; 68
+  68:	f2 e0       	ldi	r31, 0x02	; 2
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a2 37       	cpi	r26, 0x72	; 114
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	10 e0       	ldi	r17, 0x00	; 0
+  78:	a2 e7       	ldi	r26, 0x72	; 114
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a3 37       	cpi	r26, 0x73	; 115
+  82:	b1 07       	cpc	r27, r17
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 16 01 	call	0x22c	; 0x22c <main>
+  8a:	0c 94 20 01 	jmp	0x240	; 0x240 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <_Z12delay_reducel>:
+
+#ifndef LIB_DELAY_H_
+#define LIB_DELAY_H_
+
+void delay_reduce(long int delay)
+{
+  92:	dc 01       	movw	r26, r24
+  94:	cb 01       	movw	r24, r22
+    for(;delay > 1;delay--)
+	{
+		asm volatile ("nop");
+	}
+	*/
+	while (delay)
+  96:	00 97       	sbiw	r24, 0x00	; 0
+  98:	a1 05       	cpc	r26, r1
+  9a:	b1 05       	cpc	r27, r1
+  9c:	41 f0       	breq	.+16     	; 0xae <_Z12delay_reducel+0x1c>
+	{
+		delay--;
+  9e:	01 97       	sbiw	r24, 0x01	; 1
+  a0:	a1 09       	sbc	r26, r1
+  a2:	b1 09       	sbc	r27, r1
+		asm volatile ("nop");
+  a4:	00 00       	nop
+    for(;delay > 1;delay--)
+	{
+		asm volatile ("nop");
+	}
+	*/
+	while (delay)
+  a6:	00 97       	sbiw	r24, 0x00	; 0
+  a8:	a1 05       	cpc	r26, r1
+  aa:	b1 05       	cpc	r27, r1
+  ac:	c1 f7       	brne	.-16     	; 0x9e <_Z12delay_reducel+0xc>
+  ae:	08 95       	ret
+
+000000b0 <_Z12delay_secondi>:
+
+void delay_second(int i) 
+{
+	
+	int j;
+	for(;i!=0;i--)
+  b0:	00 97       	sbiw	r24, 0x00	; 0
+  b2:	41 f4       	brne	.+16     	; 0xc4 <_Z12delay_secondi+0x14>
+  b4:	08 95       	ret
+  b6:	21 50       	subi	r18, 0x01	; 1
+  b8:	30 40       	sbci	r19, 0x00	; 0
+	{
+		for(j=65535;j!=0;j--);
+  ba:	e9 f7       	brne	.-6      	; 0xb6 <_Z12delay_secondi+0x6>
+		{
+			asm volatile ("nop");
+  bc:	00 00       	nop
+
+void delay_second(int i) 
+{
+	
+	int j;
+	for(;i!=0;i--)
+  be:	01 97       	sbiw	r24, 0x01	; 1
+  c0:	19 f4       	brne	.+6      	; 0xc8 <_Z12delay_secondi+0x18>
+  c2:	08 95       	ret
+		asm volatile ("nop");
+	}
+}
+
+void delay_second(int i) 
+{
+  c4:	4f ef       	ldi	r20, 0xFF	; 255
+  c6:	5f ef       	ldi	r21, 0xFF	; 255
+  c8:	9a 01       	movw	r18, r20
+  ca:	f5 cf       	rjmp	.-22     	; 0xb6 <_Z12delay_secondi+0x6>
+
+000000cc <_Z10NIXIE_INITv>:
+
+#define uchar unsigned char
+//*********************数码管初始化
+void NIXIE_INIT()
+{
+	NIXIE_DDR = 0xff;
+  cc:	8f ef       	ldi	r24, 0xFF	; 255
+  ce:	8a bb       	out	0x1a, r24	; 26
+	
+	NIXIE_PORT = 0x00;
+  d0:	1b ba       	out	0x1b, r1	; 27
+	
+}
+  d2:	08 95       	ret
+
+000000d4 <_Z10NIXIE_SHOWh>:
+
+//********************显示数码管 输入序号显示相应的数字 暂时没有加入英文 最后一个为错值
+void NIXIE_SHOW(uchar count)
+{
+  d4:	cf 93       	push	r28
+  d6:	df 93       	push	r29
+  d8:	cd b7       	in	r28, 0x3d	; 61
+  da:	de b7       	in	r29, 0x3e	; 62
+  dc:	61 97       	sbiw	r28, 0x11	; 17
+  de:	0f b6       	in	r0, 0x3f	; 63
+  e0:	f8 94       	cli
+  e2:	de bf       	out	0x3e, r29	; 62
+  e4:	0f be       	out	0x3f, r0	; 63
+  e6:	cd bf       	out	0x3d, r28	; 61
+uchar nixie[17]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71,0x00};
+  e8:	de 01       	movw	r26, r28
+  ea:	11 96       	adiw	r26, 0x01	; 1
+  ec:	e0 e6       	ldi	r30, 0x60	; 96
+  ee:	f0 e0       	ldi	r31, 0x00	; 0
+  f0:	91 e1       	ldi	r25, 0x11	; 17
+  f2:	01 90       	ld	r0, Z+
+  f4:	0d 92       	st	X+, r0
+  f6:	91 50       	subi	r25, 0x01	; 1
+  f8:	e1 f7       	brne	.-8      	; 0xf2 <_Z10NIXIE_SHOWh+0x1e>
+	
+NIXIE_PORT=nixie[count];
+  fa:	fe 01       	movw	r30, r28
+  fc:	e8 0f       	add	r30, r24
+  fe:	f1 1d       	adc	r31, r1
+ 100:	81 81       	ldd	r24, Z+1	; 0x01
+ 102:	8b bb       	out	0x1b, r24	; 27
+
+}
+ 104:	61 96       	adiw	r28, 0x11	; 17
+ 106:	0f b6       	in	r0, 0x3f	; 63
+ 108:	f8 94       	cli
+ 10a:	de bf       	out	0x3e, r29	; 62
+ 10c:	0f be       	out	0x3f, r0	; 63
+ 10e:	cd bf       	out	0x3d, r28	; 61
+ 110:	df 91       	pop	r29
+ 112:	cf 91       	pop	r28
+ 114:	08 95       	ret
+
+00000116 <_Z10NIXIE_FLOWv>:
+//*******************循环显示0到9 延时没有严格计算
+void NIXIE_FLOW()
+{
+ 116:	cf 93       	push	r28
+       for(uchar count=0;count<=15;count++)
+ 118:	c0 e0       	ldi	r28, 0x00	; 0
+	   {
+		  
+		    
+		NIXIE_SHOW(count);
+ 11a:	8c 2f       	mov	r24, r28
+ 11c:	0e 94 6a 00 	call	0xd4	; 0xd4 <_Z10NIXIE_SHOWh>
+		
+		delay_second(7);
+ 120:	87 e0       	ldi	r24, 0x07	; 7
+ 122:	90 e0       	ldi	r25, 0x00	; 0
+ 124:	0e 94 58 00 	call	0xb0	; 0xb0 <_Z12delay_secondi>
+
+}
+//*******************循环显示0到9 延时没有严格计算
+void NIXIE_FLOW()
+{
+       for(uchar count=0;count<=15;count++)
+ 128:	cf 5f       	subi	r28, 0xFF	; 255
+ 12a:	c0 31       	cpi	r28, 0x10	; 16
+ 12c:	b1 f7       	brne	.-20     	; 0x11a <_Z10NIXIE_FLOWv+0x4>
+		NIXIE_SHOW(count);
+		
+		delay_second(7);
+		   
+	   }		   
+    }
+ 12e:	cf 91       	pop	r28
+ 130:	08 95       	ret
+
+00000132 <_Z15NIXIE_4BIT_INITv>:
+	//*********************数码管4位初始化
+void NIXIE_4BIT_INIT()
+{
+	NIXIE_DDR = 0xff;
+ 132:	8f ef       	ldi	r24, 0xFF	; 255
+ 134:	8a bb       	out	0x1a, r24	; 26
+	
+	NIXIE_PORT = 0x00;
+ 136:	1b ba       	out	0x1b, r1	; 27
+	
+	//***********准备工作
+	NIXIE_DDR = 0XFF;
+ 138:	8a bb       	out	0x1a, r24	; 26
+	
+	NIXIE_CON_DDR |= (1 << 0)|(1 << 1)|(1 << 2)|(1 << 3);
+ 13a:	81 b3       	in	r24, 0x11	; 17
+ 13c:	8f 60       	ori	r24, 0x0F	; 15
+ 13e:	81 bb       	out	0x11, r24	; 17
+}
+ 140:	08 95       	ret
+
+00000142 <_Z17NIXIE_4BIT_3_SHOWh>:
+{
+	
+	
+	//******************第一位
+	
+	NIXIE_PORT = 0X00;
+ 142:	1b ba       	out	0x1b, r1	; 27
+	
+	NIXIE_CON_PORT = NIXIE_CON_PORT | 0X0F;//*********	清低四位 
+ 144:	92 b3       	in	r25, 0x12	; 18
+ 146:	9f 60       	ori	r25, 0x0F	; 15
+ 148:	92 bb       	out	0x12, r25	; 18
+	
+	NIXIE_CON_PORT = NIXIE_CON_PORT & 0XF7;//*********第一位
+ 14a:	93 98       	cbi	0x12, 3	; 18
+	
+	//NIXIE_CON_PORT = ~(1 << 3);
+	
+	NIXIE_SHOW(T);
+ 14c:	0e 94 6a 00 	call	0xd4	; 0xd4 <_Z10NIXIE_SHOWh>
+	
+	delay_reduce(10);
+ 150:	6a e0       	ldi	r22, 0x0A	; 10
+ 152:	70 e0       	ldi	r23, 0x00	; 0
+ 154:	80 e0       	ldi	r24, 0x00	; 0
+ 156:	90 e0       	ldi	r25, 0x00	; 0
+ 158:	0e 94 49 00 	call	0x92	; 0x92 <_Z12delay_reducel>
+	
+	
+}	
+ 15c:	08 95       	ret
+
+0000015e <_Z17NIXIE_4BIT_2_SHOWh>:
+{
+	
+	
+	//******************第一位
+	
+	NIXIE_PORT = 0X00;
+ 15e:	1b ba       	out	0x1b, r1	; 27
+	
+	NIXIE_CON_PORT = NIXIE_CON_PORT | 0X0F;//*********	清低四位 
+ 160:	92 b3       	in	r25, 0x12	; 18
+ 162:	9f 60       	ori	r25, 0x0F	; 15
+ 164:	92 bb       	out	0x12, r25	; 18
+	
+	NIXIE_CON_PORT = NIXIE_CON_PORT & 0XFB;//*********第一位
+ 166:	92 98       	cbi	0x12, 2	; 18
+	
+	//NIXIE_CON_PORT = ~(1 << 2);
+	
+	NIXIE_SHOW(T);
+ 168:	0e 94 6a 00 	call	0xd4	; 0xd4 <_Z10NIXIE_SHOWh>
+	
+	delay_reduce(10);
+ 16c:	6a e0       	ldi	r22, 0x0A	; 10
+ 16e:	70 e0       	ldi	r23, 0x00	; 0
+ 170:	80 e0       	ldi	r24, 0x00	; 0
+ 172:	90 e0       	ldi	r25, 0x00	; 0
+ 174:	0e 94 49 00 	call	0x92	; 0x92 <_Z12delay_reducel>
+	
+	
+}	
+ 178:	08 95       	ret
+
+0000017a <_Z17NIXIE_4BIT_1_SHOWh>:
+{
+	
+	
+	//******************第一位
+	
+	NIXIE_PORT = 0X00;
+ 17a:	1b ba       	out	0x1b, r1	; 27
+	
+	NIXIE_CON_PORT = NIXIE_CON_PORT | 0X0F;//*********	清低四位 
+ 17c:	92 b3       	in	r25, 0x12	; 18
+ 17e:	9f 60       	ori	r25, 0x0F	; 15
+ 180:	92 bb       	out	0x12, r25	; 18
+	
+	NIXIE_CON_PORT = NIXIE_CON_PORT & 0XFD;//*********第一位
+ 182:	91 98       	cbi	0x12, 1	; 18
+	
+	//NIXIE_CON_PORT = ~(1 << 1);
+	
+	NIXIE_SHOW(T);
+ 184:	0e 94 6a 00 	call	0xd4	; 0xd4 <_Z10NIXIE_SHOWh>
+	
+	delay_reduce(10);
+ 188:	6a e0       	ldi	r22, 0x0A	; 10
+ 18a:	70 e0       	ldi	r23, 0x00	; 0
+ 18c:	80 e0       	ldi	r24, 0x00	; 0
+ 18e:	90 e0       	ldi	r25, 0x00	; 0
+ 190:	0e 94 49 00 	call	0x92	; 0x92 <_Z12delay_reducel>
+	
+	
+}	
+ 194:	08 95       	ret
+
+00000196 <_Z17NIXIE_4BIT_0_SHOWh>:
+{
+	
+	
+	//******************第一位
+	
+	NIXIE_PORT = 0X00;
+ 196:	1b ba       	out	0x1b, r1	; 27
+	
+	NIXIE_CON_PORT = NIXIE_CON_PORT | 0X0F;//*********	清低四位 
+ 198:	92 b3       	in	r25, 0x12	; 18
+ 19a:	9f 60       	ori	r25, 0x0F	; 15
+ 19c:	92 bb       	out	0x12, r25	; 18
+	
+	NIXIE_CON_PORT = NIXIE_CON_PORT & 0XFE;//*********第一位
+ 19e:	90 98       	cbi	0x12, 0	; 18
+	
+	//NIXIE_CON_PORT = ~(1 << 0);
+	
+	NIXIE_SHOW(T);
+ 1a0:	0e 94 6a 00 	call	0xd4	; 0xd4 <_Z10NIXIE_SHOWh>
+	
+	delay_reduce(10);
+ 1a4:	6a e0       	ldi	r22, 0x0A	; 10
+ 1a6:	70 e0       	ldi	r23, 0x00	; 0
+ 1a8:	80 e0       	ldi	r24, 0x00	; 0
+ 1aa:	90 e0       	ldi	r25, 0x00	; 0
+ 1ac:	0e 94 49 00 	call	0x92	; 0x92 <_Z12delay_reducel>
+	
+	
+}	
+ 1b0:	08 95       	ret
+
+000001b2 <_Z15NIXIE_4BIT_SHOWhhhh>:
+//********************四位数码管显示
+void NIXIE_4BIT_SHOW(uchar D ,uchar C ,uchar B ,uchar A)
+{
+ 1b2:	1f 93       	push	r17
+ 1b4:	cf 93       	push	r28
+ 1b6:	df 93       	push	r29
+ 1b8:	c8 2f       	mov	r28, r24
+ 1ba:	d6 2f       	mov	r29, r22
+ 1bc:	14 2f       	mov	r17, r20
+ 1be:	82 2f       	mov	r24, r18
+	NIXIE_4BIT_0_SHOW(A);
+ 1c0:	0e 94 cb 00 	call	0x196	; 0x196 <_Z17NIXIE_4BIT_0_SHOWh>
+	
+	NIXIE_4BIT_1_SHOW(B);
+ 1c4:	81 2f       	mov	r24, r17
+ 1c6:	0e 94 bd 00 	call	0x17a	; 0x17a <_Z17NIXIE_4BIT_1_SHOWh>
+	
+	NIXIE_4BIT_2_SHOW(C);
+ 1ca:	8d 2f       	mov	r24, r29
+ 1cc:	0e 94 af 00 	call	0x15e	; 0x15e <_Z17NIXIE_4BIT_2_SHOWh>
+	
+	NIXIE_4BIT_3_SHOW(D);
+ 1d0:	8c 2f       	mov	r24, r28
+ 1d2:	0e 94 a1 00 	call	0x142	; 0x142 <_Z17NIXIE_4BIT_3_SHOWh>
+	
+	
+}
+ 1d6:	df 91       	pop	r29
+ 1d8:	cf 91       	pop	r28
+ 1da:	1f 91       	pop	r17
+ 1dc:	08 95       	ret
+
+000001de <_Z28EXTERNAL_INTERRUPT0_INIT_M16v>:
+
+//******************初始化*****************
+
+void EXTERNAL_INTERRUPT0_INIT_M16()
+{
+	DDRD &= ~(1 << INT0_FOOT);
+ 1de:	8a 98       	cbi	0x11, 2	; 17
+	
+	PORTD |= (1 << INT0_FOOT);
+ 1e0:	92 9a       	sbi	0x12, 2	; 18
+	
+	MCUCR |= (1<<ISC01);//外部中断0下降沿产生中断 
+ 1e2:	85 b7       	in	r24, 0x35	; 53
+ 1e4:	82 60       	ori	r24, 0x02	; 2
+ 1e6:	85 bf       	out	0x35, r24	; 53
+	
+	GICR |= (1<<INT0);//开外部中断0
+ 1e8:	8b b7       	in	r24, 0x3b	; 59
+ 1ea:	80 64       	ori	r24, 0x40	; 64
+ 1ec:	8b bf       	out	0x3b, r24	; 59
+	
+	
+}
+ 1ee:	08 95       	ret
+
+000001f0 <_Z28EXTERNAL_INTERRUPT2_INIT_M16v>:
+
+
+//**********************************外部中断2
+void EXTERNAL_INTERRUPT2_INIT_M16()
+{
+	DDRB &= ~(1<<2);
+ 1f0:	ba 98       	cbi	0x17, 2	; 23
+	PORTB |= (1<<2);
+ 1f2:	c2 9a       	sbi	0x18, 2	; 24
+	MCUCSR &= ~(1<<ISC2);//外部中断2 下降沿产生中断
+ 1f4:	84 b7       	in	r24, 0x34	; 52
+ 1f6:	8f 7b       	andi	r24, 0xBF	; 191
+ 1f8:	84 bf       	out	0x34, r24	; 52
+	GICR |= (1<<INT2);//开外部中断2
+ 1fa:	8b b7       	in	r24, 0x3b	; 59
+ 1fc:	80 62       	ori	r24, 0x20	; 32
+ 1fe:	8b bf       	out	0x3b, r24	; 59
+	
+	
+}
+ 200:	08 95       	ret
+
+00000202 <__vector_1>:
+#include <E:\kuaipan\EDEN\avr\system\lib_external_interrupt.h>
+
+uchar COUNT_NUM = 0;
+
+ISR(INT0_vect)
+{
+ 202:	1f 92       	push	r1
+ 204:	0f 92       	push	r0
+ 206:	0f b6       	in	r0, 0x3f	; 63
+ 208:	0f 92       	push	r0
+ 20a:	11 24       	eor	r1, r1
+ 20c:	8f 93       	push	r24
+	
+	COUNT_NUM ++;
+ 20e:	80 91 72 00 	lds	r24, 0x0072
+ 212:	8f 5f       	subi	r24, 0xFF	; 255
+ 214:	80 93 72 00 	sts	0x0072, r24
+	
+	if (COUNT_NUM == 16)
+ 218:	80 31       	cpi	r24, 0x10	; 16
+ 21a:	11 f4       	brne	.+4      	; 0x220 <__vector_1+0x1e>
+	{
+		COUNT_NUM = 0;
+ 21c:	10 92 72 00 	sts	0x0072, r1
+	}
+	
+	
+	
+}
+ 220:	8f 91       	pop	r24
+ 222:	0f 90       	pop	r0
+ 224:	0f be       	out	0x3f, r0	; 63
+ 226:	0f 90       	pop	r0
+ 228:	1f 90       	pop	r1
+ 22a:	18 95       	reti
+
+0000022c <main>:
+
+int main(void)
+{
+	NIXIE_INIT();
+ 22c:	0e 94 66 00 	call	0xcc	; 0xcc <_Z10NIXIE_INITv>
+	
+	EXTERNAL_INTERRUPT0_INIT_M16();
+ 230:	0e 94 ef 00 	call	0x1de	; 0x1de <_Z28EXTERNAL_INTERRUPT0_INIT_M16v>
+	
+	sei();
+ 234:	78 94       	sei
+	
+    while(1)
+    {
+        NIXIE_SHOW(COUNT_NUM);
+ 236:	80 91 72 00 	lds	r24, 0x0072
+ 23a:	0e 94 6a 00 	call	0xd4	; 0xd4 <_Z10NIXIE_SHOWh>
+ 23e:	fb cf       	rjmp	.-10     	; 0x236 <main+0xa>
+
+00000240 <_exit>:
+ 240:	f8 94       	cli
+
+00000242 <__stop_program>:
+ 242:	ff cf       	rjmp	.-2      	; 0x242 <__stop_program>
