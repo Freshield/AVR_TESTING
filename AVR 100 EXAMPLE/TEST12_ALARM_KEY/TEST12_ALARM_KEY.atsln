@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "TEST12_ALARM_KEY", "TEST12_ALARM_KEY\TEST12_ALARM_KEY.cppproj", "{DCD2FC25-0FC3-4DF0-8021-27A4E72D8083}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCD2FC25-0FC3-4DF0-8021-27A4E72D8083}.Debug|AVR.ActiveCfg = Debug|AVR
+		{DCD2FC25-0FC3-4DF0-8021-27A4E72D8083}.Debug|AVR.Build.0 = Debug|AVR
+		{DCD2FC25-0FC3-4DF0-8021-27A4E72D8083}.Release|AVR.ActiveCfg = Release|AVR
+		{DCD2FC25-0FC3-4DF0-8021-27A4E72D8083}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
