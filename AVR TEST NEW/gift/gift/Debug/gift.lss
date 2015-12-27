@@ -1,0 +1,347 @@
+
+gift.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000012e  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  0000012e  000001a2  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .stab         000006b4  00000000  00000000  000001a4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000085  00000000  00000000  00000858  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_aranges 00000080  00000000  00000000  000008e0  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   0000036c  00000000  00000000  00000960  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000000ba  00000000  00000000  00000ccc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000023b  00000000  00000000  00000d86  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000034  00000000  00000000  00000fc4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000009d  00000000  00000000  00000ff8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000029  00000000  00000000  00001095  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	09 c0       	rjmp	.+18     	; 0x14 <__ctors_end>
+   2:	21 c0       	rjmp	.+66     	; 0x46 <__bad_interrupt>
+   4:	20 c0       	rjmp	.+64     	; 0x46 <__bad_interrupt>
+   6:	1f c0       	rjmp	.+62     	; 0x46 <__bad_interrupt>
+   8:	1e c0       	rjmp	.+60     	; 0x46 <__bad_interrupt>
+   a:	1d c0       	rjmp	.+58     	; 0x46 <__bad_interrupt>
+   c:	1c c0       	rjmp	.+56     	; 0x46 <__bad_interrupt>
+   e:	1b c0       	rjmp	.+54     	; 0x46 <__bad_interrupt>
+  10:	1a c0       	rjmp	.+52     	; 0x46 <__bad_interrupt>
+  12:	19 c0       	rjmp	.+50     	; 0x46 <__bad_interrupt>
+
+00000014 <__ctors_end>:
+  14:	11 24       	eor	r1, r1
+  16:	1f be       	out	0x3f, r1	; 63
+  18:	cf e9       	ldi	r28, 0x9F	; 159
+  1a:	cd bf       	out	0x3d, r28	; 61
+
+0000001c <__do_copy_data>:
+  1c:	10 e0       	ldi	r17, 0x00	; 0
+  1e:	a0 e6       	ldi	r26, 0x60	; 96
+  20:	b0 e0       	ldi	r27, 0x00	; 0
+  22:	ee e2       	ldi	r30, 0x2E	; 46
+  24:	f1 e0       	ldi	r31, 0x01	; 1
+  26:	02 c0       	rjmp	.+4      	; 0x2c <__do_copy_data+0x10>
+  28:	05 90       	lpm	r0, Z+
+  2a:	0d 92       	st	X+, r0
+  2c:	a0 36       	cpi	r26, 0x60	; 96
+  2e:	b1 07       	cpc	r27, r17
+  30:	d9 f7       	brne	.-10     	; 0x28 <__do_copy_data+0xc>
+
+00000032 <__do_clear_bss>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	01 c0       	rjmp	.+2      	; 0x3c <.do_clear_bss_start>
+
+0000003a <.do_clear_bss_loop>:
+  3a:	1d 92       	st	X+, r1
+
+0000003c <.do_clear_bss_start>:
+  3c:	a0 36       	cpi	r26, 0x60	; 96
+  3e:	b1 07       	cpc	r27, r17
+  40:	e1 f7       	brne	.-8      	; 0x3a <.do_clear_bss_loop>
+  42:	10 d0       	rcall	.+32     	; 0x64 <main>
+  44:	72 c0       	rjmp	.+228    	; 0x12a <_exit>
+
+00000046 <__bad_interrupt>:
+  46:	dc cf       	rjmp	.-72     	; 0x0 <__vectors>
+
+00000048 <_Z5DELAYi>:
+#include <avr/io.h>
+
+void DELAY(int i)
+{
+	int j;
+	for(;i!=0;i--)
+  48:	00 97       	sbiw	r24, 0x00	; 0
+  4a:	41 f4       	brne	.+16     	; 0x5c <_Z5DELAYi+0x14>
+  4c:	08 95       	ret
+  4e:	21 50       	subi	r18, 0x01	; 1
+  50:	30 40       	sbci	r19, 0x00	; 0
+	{
+		for(j=65535;j!=0;j--);
+  52:	e9 f7       	brne	.-6      	; 0x4e <_Z5DELAYi+0x6>
+		{
+			asm volatile ("nop");
+  54:	00 00       	nop
+#include <avr/io.h>
+
+void DELAY(int i)
+{
+	int j;
+	for(;i!=0;i--)
+  56:	01 97       	sbiw	r24, 0x01	; 1
+  58:	19 f4       	brne	.+6      	; 0x60 <_Z5DELAYi+0x18>
+  5a:	08 95       	ret
+
+
+#include <avr/io.h>
+
+void DELAY(int i)
+{
+  5c:	4f ef       	ldi	r20, 0xFF	; 255
+  5e:	5f ef       	ldi	r21, 0xFF	; 255
+  60:	9a 01       	movw	r18, r20
+  62:	f5 cf       	rjmp	.-22     	; 0x4e <_Z5DELAYi+0x6>
+
+00000064 <main>:
+	
+}
+
+int main(void)
+{
+	DDRB = 0XFF;
+  64:	8f ef       	ldi	r24, 0xFF	; 255
+  66:	87 bb       	out	0x17, r24	; 23
+    while(1)
+    {
+		PORTB = 0X00;
+  68:	ee 24       	eor	r14, r14
+  6a:	ff 24       	eor	r15, r15
+  6c:	68 94       	set
+  6e:	e7 f8       	bld	r14, 7
+			
+			DELAY(5);
+			
+		}
+		
+		PORTB = 0XFF;
+  70:	1f ef       	ldi	r17, 0xFF	; 255
+int main(void)
+{
+	DDRB = 0XFF;
+    while(1)
+    {
+		PORTB = 0X00;
+  72:	18 ba       	out	0x18, r1	; 24
+  74:	e7 01       	movw	r28, r14
+		
+        for(int i = 0;i < 128;i ++)
+		{
+			PORTB = PORTB ++;
+  76:	88 b3       	in	r24, 0x18	; 24
+  78:	88 bb       	out	0x18, r24	; 24
+  7a:	8f 5f       	subi	r24, 0xFF	; 255
+  7c:	88 bb       	out	0x18, r24	; 24
+			
+			DELAY(5);
+  7e:	85 e0       	ldi	r24, 0x05	; 5
+  80:	90 e0       	ldi	r25, 0x00	; 0
+  82:	e2 df       	rcall	.-60     	; 0x48 <_Z5DELAYi>
+  84:	21 97       	sbiw	r28, 0x01	; 1
+	DDRB = 0XFF;
+    while(1)
+    {
+		PORTB = 0X00;
+		
+        for(int i = 0;i < 128;i ++)
+  86:	b9 f7       	brne	.-18     	; 0x76 <main+0x12>
+			
+			DELAY(5);
+			
+		}
+		
+		PORTB = 0XFF;
+  88:	18 bb       	out	0x18, r17	; 24
+		
+		DELAY(5);
+  8a:	85 e0       	ldi	r24, 0x05	; 5
+  8c:	90 e0       	ldi	r25, 0x00	; 0
+  8e:	dc df       	rcall	.-72     	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0X00;
+  90:	18 ba       	out	0x18, r1	; 24
+		
+		DELAY(5);
+  92:	85 e0       	ldi	r24, 0x05	; 5
+  94:	90 e0       	ldi	r25, 0x00	; 0
+  96:	d8 df       	rcall	.-80     	; 0x48 <_Z5DELAYi>
+				
+		PORTB = 0XFF;
+  98:	18 bb       	out	0x18, r17	; 24
+		
+		DELAY(5);
+  9a:	85 e0       	ldi	r24, 0x05	; 5
+  9c:	90 e0       	ldi	r25, 0x00	; 0
+  9e:	d4 df       	rcall	.-88     	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0X00;
+  a0:	18 ba       	out	0x18, r1	; 24
+		
+		DELAY(5);
+  a2:	85 e0       	ldi	r24, 0x05	; 5
+  a4:	90 e0       	ldi	r25, 0x00	; 0
+  a6:	d0 df       	rcall	.-96     	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0XFF;
+  a8:	18 bb       	out	0x18, r17	; 24
+		
+		DELAY(5);
+  aa:	85 e0       	ldi	r24, 0x05	; 5
+  ac:	90 e0       	ldi	r25, 0x00	; 0
+  ae:	cc df       	rcall	.-104    	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0X00;
+  b0:	18 ba       	out	0x18, r1	; 24
+		
+		DELAY(5);
+  b2:	85 e0       	ldi	r24, 0x05	; 5
+  b4:	90 e0       	ldi	r25, 0x00	; 0
+  b6:	c8 df       	rcall	.-112    	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0XFF;
+  b8:	18 bb       	out	0x18, r17	; 24
+		
+		DELAY(5);
+  ba:	85 e0       	ldi	r24, 0x05	; 5
+  bc:	90 e0       	ldi	r25, 0x00	; 0
+  be:	c4 df       	rcall	.-120    	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0X00;
+  c0:	18 ba       	out	0x18, r1	; 24
+		
+		DELAY(5);
+  c2:	85 e0       	ldi	r24, 0x05	; 5
+  c4:	90 e0       	ldi	r25, 0x00	; 0
+  c6:	c0 df       	rcall	.-128    	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0XFF;
+  c8:	18 bb       	out	0x18, r17	; 24
+		
+		DELAY(5);
+  ca:	85 e0       	ldi	r24, 0x05	; 5
+  cc:	90 e0       	ldi	r25, 0x00	; 0
+  ce:	bc df       	rcall	.-136    	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0X00;
+  d0:	18 ba       	out	0x18, r1	; 24
+		
+		DELAY(5);			
+  d2:	85 e0       	ldi	r24, 0x05	; 5
+  d4:	90 e0       	ldi	r25, 0x00	; 0
+  d6:	b8 df       	rcall	.-144    	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0XFF;
+  d8:	18 bb       	out	0x18, r17	; 24
+		
+		DELAY(5);
+  da:	85 e0       	ldi	r24, 0x05	; 5
+  dc:	90 e0       	ldi	r25, 0x00	; 0
+  de:	b4 df       	rcall	.-152    	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0X00;
+  e0:	18 ba       	out	0x18, r1	; 24
+		
+		DELAY(5);
+  e2:	85 e0       	ldi	r24, 0x05	; 5
+  e4:	90 e0       	ldi	r25, 0x00	; 0
+  e6:	b0 df       	rcall	.-160    	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0XFF;
+  e8:	18 bb       	out	0x18, r17	; 24
+		
+		DELAY(5);
+  ea:	85 e0       	ldi	r24, 0x05	; 5
+  ec:	90 e0       	ldi	r25, 0x00	; 0
+  ee:	ac df       	rcall	.-168    	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0X00;
+  f0:	18 ba       	out	0x18, r1	; 24
+		
+		DELAY(5);
+  f2:	85 e0       	ldi	r24, 0x05	; 5
+  f4:	90 e0       	ldi	r25, 0x00	; 0
+  f6:	a8 df       	rcall	.-176    	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0XFF;
+  f8:	18 bb       	out	0x18, r17	; 24
+		
+		DELAY(5);
+  fa:	85 e0       	ldi	r24, 0x05	; 5
+  fc:	90 e0       	ldi	r25, 0x00	; 0
+  fe:	a4 df       	rcall	.-184    	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0X00;
+ 100:	18 ba       	out	0x18, r1	; 24
+		
+		DELAY(5);
+ 102:	85 e0       	ldi	r24, 0x05	; 5
+ 104:	90 e0       	ldi	r25, 0x00	; 0
+ 106:	a0 df       	rcall	.-192    	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0XFF;
+ 108:	18 bb       	out	0x18, r17	; 24
+		
+		DELAY(5);
+ 10a:	85 e0       	ldi	r24, 0x05	; 5
+ 10c:	90 e0       	ldi	r25, 0x00	; 0
+ 10e:	9c df       	rcall	.-200    	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0X00;
+ 110:	18 ba       	out	0x18, r1	; 24
+		
+		DELAY(5);
+ 112:	85 e0       	ldi	r24, 0x05	; 5
+ 114:	90 e0       	ldi	r25, 0x00	; 0
+ 116:	98 df       	rcall	.-208    	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0XFF;
+ 118:	18 bb       	out	0x18, r17	; 24
+		
+		DELAY(5);
+ 11a:	85 e0       	ldi	r24, 0x05	; 5
+ 11c:	90 e0       	ldi	r25, 0x00	; 0
+ 11e:	94 df       	rcall	.-216    	; 0x48 <_Z5DELAYi>
+		
+		PORTB = 0X00;
+ 120:	18 ba       	out	0x18, r1	; 24
+		
+		DELAY(5);
+ 122:	85 e0       	ldi	r24, 0x05	; 5
+ 124:	90 e0       	ldi	r25, 0x00	; 0
+ 126:	90 df       	rcall	.-224    	; 0x48 <_Z5DELAYi>
+}
+
+int main(void)
+{
+	DDRB = 0XFF;
+    while(1)
+ 128:	a4 cf       	rjmp	.-184    	; 0x72 <main+0xe>
+
+0000012a <_exit>:
+ 12a:	f8 94       	cli
+
+0000012c <__stop_program>:
+ 12c:	ff cf       	rjmp	.-2      	; 0x12c <__stop_program>
