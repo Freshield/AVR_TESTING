@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "TEST16_TIMER0_LED_TWINK", "TEST16_TIMER0_LED_TWINK\TEST16_TIMER0_LED_TWINK.cppproj", "{FB80C6D0-9CBB-4103-A083-BE0C7814A2DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB80C6D0-9CBB-4103-A083-BE0C7814A2DA}.Debug|AVR.ActiveCfg = Debug|AVR
+		{FB80C6D0-9CBB-4103-A083-BE0C7814A2DA}.Debug|AVR.Build.0 = Debug|AVR
+		{FB80C6D0-9CBB-4103-A083-BE0C7814A2DA}.Release|AVR.ActiveCfg = Release|AVR
+		{FB80C6D0-9CBB-4103-A083-BE0C7814A2DA}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
