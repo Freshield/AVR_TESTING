@@ -1,0 +1,1550 @@
+
+TEST20_TIMER1_TIMER2_NIXIE_4BIT_SHOWTIME.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000826  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000012  00800060  00000826  000008ba  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000008  00800072  00800072  000008cc  2**0
+                  ALLOC
+  3 .stab         00001890  00000000  00000000  000008cc  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      0000051f  00000000  00000000  0000215c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_aranges 000000a0  00000000  00000000  00002680  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000097d  00000000  00000000  00002720  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000016e  00000000  00000000  0000309d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000403  00000000  00000000  0000320b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000300  00000000  00000000  00003610  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000632  00000000  00000000  00003910  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000071a  00000000  00000000  00003f42  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 f8 01 	jmp	0x3f0	; 0x3f0 <__vector_4>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 67 02 	jmp	0x4ce	; 0x4ce <__vector_8>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e6 e2       	ldi	r30, 0x26	; 38
+  68:	f8 e0       	ldi	r31, 0x08	; 8
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a2 37       	cpi	r26, 0x72	; 114
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	10 e0       	ldi	r17, 0x00	; 0
+  78:	a2 e7       	ldi	r26, 0x72	; 114
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	aa 37       	cpi	r26, 0x7A	; 122
+  82:	b1 07       	cpc	r27, r17
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 ac 02 	call	0x558	; 0x558 <main>
+  8a:	0c 94 11 04 	jmp	0x822	; 0x822 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <_Z12delay_reducel>:
+
+#ifndef LIB_DELAY_H_
+#define LIB_DELAY_H_
+
+void delay_reduce(long int delay)
+{
+  92:	dc 01       	movw	r26, r24
+  94:	cb 01       	movw	r24, r22
+    for(;delay > 1;delay--)
+	{
+		asm volatile ("nop");
+	}
+	*/
+	while (delay)
+  96:	00 97       	sbiw	r24, 0x00	; 0
+  98:	a1 05       	cpc	r26, r1
+  9a:	b1 05       	cpc	r27, r1
+  9c:	41 f0       	breq	.+16     	; 0xae <_Z12delay_reducel+0x1c>
+	{
+		delay--;
+  9e:	01 97       	sbiw	r24, 0x01	; 1
+  a0:	a1 09       	sbc	r26, r1
+  a2:	b1 09       	sbc	r27, r1
+		asm volatile ("nop");
+  a4:	00 00       	nop
+    for(;delay > 1;delay--)
+	{
+		asm volatile ("nop");
+	}
+	*/
+	while (delay)
+  a6:	00 97       	sbiw	r24, 0x00	; 0
+  a8:	a1 05       	cpc	r26, r1
+  aa:	b1 05       	cpc	r27, r1
+  ac:	c1 f7       	brne	.-16     	; 0x9e <_Z12delay_reducel+0xc>
+  ae:	08 95       	ret
+
+000000b0 <_Z12delay_secondi>:
+
+void delay_second(int i) 
+{
+	
+	int j;
+	for(;i!=0;i--)
+  b0:	00 97       	sbiw	r24, 0x00	; 0
+  b2:	41 f4       	brne	.+16     	; 0xc4 <_Z12delay_secondi+0x14>
+  b4:	08 95       	ret
+  b6:	21 50       	subi	r18, 0x01	; 1
+  b8:	30 40       	sbci	r19, 0x00	; 0
+	{
+		for(j=65535;j!=0;j--);
+  ba:	e9 f7       	brne	.-6      	; 0xb6 <_Z12delay_secondi+0x6>
+		{
+			asm volatile ("nop");
+  bc:	00 00       	nop
+
+void delay_second(int i) 
+{
+	
+	int j;
+	for(;i!=0;i--)
+  be:	01 97       	sbiw	r24, 0x01	; 1
+  c0:	19 f4       	brne	.+6      	; 0xc8 <_Z12delay_secondi+0x18>
+  c2:	08 95       	ret
+		asm volatile ("nop");
+	}
+}
+
+void delay_second(int i) 
+{
+  c4:	4f ef       	ldi	r20, 0xFF	; 255
+  c6:	5f ef       	ldi	r21, 0xFF	; 255
+  c8:	9a 01       	movw	r18, r20
+  ca:	f5 cf       	rjmp	.-22     	; 0xb6 <_Z12delay_secondi+0x6>
+
+000000cc <_Z10NIXIE_INITv>:
+
+#define uchar unsigned char
+//*********************数码管初始化
+void NIXIE_INIT()
+{
+	NIXIE_DDR = 0xff;
+  cc:	8f ef       	ldi	r24, 0xFF	; 255
+  ce:	8a bb       	out	0x1a, r24	; 26
+	
+	NIXIE_PORT = 0x00;
+  d0:	1b ba       	out	0x1b, r1	; 27
+	
+}
+  d2:	08 95       	ret
+
+000000d4 <_Z10NIXIE_SHOWh>:
+
+//********************显示数码管 输入序号显示相应的数字 暂时没有加入英文 最后一个为错值
+void NIXIE_SHOW(uchar count)
+{
+  d4:	cf 93       	push	r28
+  d6:	df 93       	push	r29
+  d8:	cd b7       	in	r28, 0x3d	; 61
+  da:	de b7       	in	r29, 0x3e	; 62
+  dc:	61 97       	sbiw	r28, 0x11	; 17
+  de:	0f b6       	in	r0, 0x3f	; 63
+  e0:	f8 94       	cli
+  e2:	de bf       	out	0x3e, r29	; 62
+  e4:	0f be       	out	0x3f, r0	; 63
+  e6:	cd bf       	out	0x3d, r28	; 61
+uchar nixie[17]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71,0x00};
+  e8:	de 01       	movw	r26, r28
+  ea:	11 96       	adiw	r26, 0x01	; 1
+  ec:	e0 e6       	ldi	r30, 0x60	; 96
+  ee:	f0 e0       	ldi	r31, 0x00	; 0
+  f0:	91 e1       	ldi	r25, 0x11	; 17
+  f2:	01 90       	ld	r0, Z+
+  f4:	0d 92       	st	X+, r0
+  f6:	91 50       	subi	r25, 0x01	; 1
+  f8:	e1 f7       	brne	.-8      	; 0xf2 <_Z10NIXIE_SHOWh+0x1e>
+	
+NIXIE_PORT=nixie[count];
+  fa:	fe 01       	movw	r30, r28
+  fc:	e8 0f       	add	r30, r24
+  fe:	f1 1d       	adc	r31, r1
+ 100:	81 81       	ldd	r24, Z+1	; 0x01
+ 102:	8b bb       	out	0x1b, r24	; 27
+
+}
+ 104:	61 96       	adiw	r28, 0x11	; 17
+ 106:	0f b6       	in	r0, 0x3f	; 63
+ 108:	f8 94       	cli
+ 10a:	de bf       	out	0x3e, r29	; 62
+ 10c:	0f be       	out	0x3f, r0	; 63
+ 10e:	cd bf       	out	0x3d, r28	; 61
+ 110:	df 91       	pop	r29
+ 112:	cf 91       	pop	r28
+ 114:	08 95       	ret
+
+00000116 <_Z10NIXIE_FLOWv>:
+//*******************循环显示0到9 延时没有严格计算
+void NIXIE_FLOW()
+{
+ 116:	cf 93       	push	r28
+       for(uchar count=0;count<=15;count++)
+ 118:	c0 e0       	ldi	r28, 0x00	; 0
+	   {
+		  
+		    
+		NIXIE_SHOW(count);
+ 11a:	8c 2f       	mov	r24, r28
+ 11c:	0e 94 6a 00 	call	0xd4	; 0xd4 <_Z10NIXIE_SHOWh>
+		
+		delay_second(7);
+ 120:	87 e0       	ldi	r24, 0x07	; 7
+ 122:	90 e0       	ldi	r25, 0x00	; 0
+ 124:	0e 94 58 00 	call	0xb0	; 0xb0 <_Z12delay_secondi>
+
+}
+//*******************循环显示0到9 延时没有严格计算
+void NIXIE_FLOW()
+{
+       for(uchar count=0;count<=15;count++)
+ 128:	cf 5f       	subi	r28, 0xFF	; 255
+ 12a:	c0 31       	cpi	r28, 0x10	; 16
+ 12c:	b1 f7       	brne	.-20     	; 0x11a <_Z10NIXIE_FLOWv+0x4>
+		NIXIE_SHOW(count);
+		
+		delay_second(7);
+		   
+	   }		   
+    }
+ 12e:	cf 91       	pop	r28
+ 130:	08 95       	ret
+
+00000132 <_Z15NIXIE_4BIT_INITv>:
+	//*********************数码管4位初始化
+void NIXIE_4BIT_INIT()
+{
+	NIXIE_DDR = 0xff;
+ 132:	8f ef       	ldi	r24, 0xFF	; 255
+ 134:	8a bb       	out	0x1a, r24	; 26
+	
+	NIXIE_PORT = 0x00;
+ 136:	1b ba       	out	0x1b, r1	; 27
+	
+	//***********准备工作
+	NIXIE_DDR = 0XFF;
+ 138:	8a bb       	out	0x1a, r24	; 26
+	
+	NIXIE_CON_DDR |= (1 << 0)|(1 << 1)|(1 << 2)|(1 << 3);
+ 13a:	81 b3       	in	r24, 0x11	; 17
+ 13c:	8f 60       	ori	r24, 0x0F	; 15
+ 13e:	81 bb       	out	0x11, r24	; 17
+}
+ 140:	08 95       	ret
+
+00000142 <_Z17NIXIE_4BIT_3_SHOWh>:
+{
+	
+	
+	//******************第3位
+	
+	NIXIE_CON_PORT = NIXIE_CON_PORT | 0X0F;//*********	清低四位 
+ 142:	92 b3       	in	r25, 0x12	; 18
+ 144:	9f 60       	ori	r25, 0x0F	; 15
+ 146:	92 bb       	out	0x12, r25	; 18
+	
+	NIXIE_PORT = 0X00;
+ 148:	1b ba       	out	0x1b, r1	; 27
+	
+	
+	NIXIE_CON_PORT = NIXIE_CON_PORT & 0XF7;//*********第3位
+ 14a:	93 98       	cbi	0x12, 3	; 18
+	
+	//NIXIE_CON_PORT = ~(1 << 3);
+	
+	NIXIE_SHOW(T);
+ 14c:	0e 94 6a 00 	call	0xd4	; 0xd4 <_Z10NIXIE_SHOWh>
+	
+	delay_reduce(100);
+ 150:	64 e6       	ldi	r22, 0x64	; 100
+ 152:	70 e0       	ldi	r23, 0x00	; 0
+ 154:	80 e0       	ldi	r24, 0x00	; 0
+ 156:	90 e0       	ldi	r25, 0x00	; 0
+ 158:	0e 94 49 00 	call	0x92	; 0x92 <_Z12delay_reducel>
+	
+}	
+ 15c:	08 95       	ret
+
+0000015e <_Z17NIXIE_4BIT_2_SHOWh>:
+{
+	
+	
+	//******************第2位
+	
+	NIXIE_CON_PORT = NIXIE_CON_PORT | 0X0F;//*********	清低四位 
+ 15e:	92 b3       	in	r25, 0x12	; 18
+ 160:	9f 60       	ori	r25, 0x0F	; 15
+ 162:	92 bb       	out	0x12, r25	; 18
+	
+	NIXIE_PORT = 0X00;
+ 164:	1b ba       	out	0x1b, r1	; 27
+	
+	
+	NIXIE_CON_PORT = NIXIE_CON_PORT & 0XFB;//*********第2位
+ 166:	92 98       	cbi	0x12, 2	; 18
+	
+	//NIXIE_CON_PORT = ~(1 << 2);
+	
+	NIXIE_SHOW(T);
+ 168:	0e 94 6a 00 	call	0xd4	; 0xd4 <_Z10NIXIE_SHOWh>
+	
+	
+	delay_reduce(100);
+ 16c:	64 e6       	ldi	r22, 0x64	; 100
+ 16e:	70 e0       	ldi	r23, 0x00	; 0
+ 170:	80 e0       	ldi	r24, 0x00	; 0
+ 172:	90 e0       	ldi	r25, 0x00	; 0
+ 174:	0e 94 49 00 	call	0x92	; 0x92 <_Z12delay_reducel>
+	
+	
+}	
+ 178:	08 95       	ret
+
+0000017a <_Z17NIXIE_4BIT_1_SHOWh>:
+{
+	
+	
+	//******************第1位
+	
+	 NIXIE_CON_PORT = NIXIE_CON_PORT | 0X0F;//*********	清低四位
+ 17a:	92 b3       	in	r25, 0x12	; 18
+ 17c:	9f 60       	ori	r25, 0x0F	; 15
+ 17e:	92 bb       	out	0x12, r25	; 18
+	
+	NIXIE_PORT = 0X00;
+ 180:	1b ba       	out	0x1b, r1	; 27
+	
+	
+	NIXIE_CON_PORT = NIXIE_CON_PORT & 0XFD;//*********第1位
+ 182:	91 98       	cbi	0x12, 1	; 18
+	
+	//NIXIE_CON_PORT = ~(1 << 1);
+	
+	NIXIE_SHOW(T);
+ 184:	0e 94 6a 00 	call	0xd4	; 0xd4 <_Z10NIXIE_SHOWh>
+
+    
+    delay_reduce(100);
+ 188:	64 e6       	ldi	r22, 0x64	; 100
+ 18a:	70 e0       	ldi	r23, 0x00	; 0
+ 18c:	80 e0       	ldi	r24, 0x00	; 0
+ 18e:	90 e0       	ldi	r25, 0x00	; 0
+ 190:	0e 94 49 00 	call	0x92	; 0x92 <_Z12delay_reducel>
+    
+
+}	
+ 194:	08 95       	ret
+
+00000196 <_Z17NIXIE_4BIT_0_SHOWh>:
+{
+	
+	
+	//******************第0位
+	
+	NIXIE_CON_PORT = NIXIE_CON_PORT | 0X0F;//*********	清低四位 
+ 196:	92 b3       	in	r25, 0x12	; 18
+ 198:	9f 60       	ori	r25, 0x0F	; 15
+ 19a:	92 bb       	out	0x12, r25	; 18
+	
+	NIXIE_PORT = 0X00;
+ 19c:	1b ba       	out	0x1b, r1	; 27
+	
+	
+	NIXIE_CON_PORT = NIXIE_CON_PORT & 0XFE;//*********第0位
+ 19e:	90 98       	cbi	0x12, 0	; 18
+	
+	//NIXIE_CON_PORT = ~(1 << 0);
+	
+	NIXIE_SHOW(T);
+ 1a0:	0e 94 6a 00 	call	0xd4	; 0xd4 <_Z10NIXIE_SHOWh>
+	
+	
+	delay_reduce(100);
+ 1a4:	64 e6       	ldi	r22, 0x64	; 100
+ 1a6:	70 e0       	ldi	r23, 0x00	; 0
+ 1a8:	80 e0       	ldi	r24, 0x00	; 0
+ 1aa:	90 e0       	ldi	r25, 0x00	; 0
+ 1ac:	0e 94 49 00 	call	0x92	; 0x92 <_Z12delay_reducel>
+	
+	
+}	
+ 1b0:	08 95       	ret
+
+000001b2 <_Z15NIXIE_4BIT_SHOWhhhh>:
+
+void NIXIE_4BIT_SHOW(uchar D ,uchar C ,uchar B ,uchar A)
+{
+ 1b2:	1f 93       	push	r17
+ 1b4:	cf 93       	push	r28
+ 1b6:	df 93       	push	r29
+ 1b8:	c8 2f       	mov	r28, r24
+ 1ba:	d6 2f       	mov	r29, r22
+ 1bc:	14 2f       	mov	r17, r20
+ 1be:	82 2f       	mov	r24, r18
+	NIXIE_4BIT_0_SHOW(A);
+ 1c0:	0e 94 cb 00 	call	0x196	; 0x196 <_Z17NIXIE_4BIT_0_SHOWh>
+	
+	NIXIE_4BIT_1_SHOW(B);
+ 1c4:	81 2f       	mov	r24, r17
+ 1c6:	0e 94 bd 00 	call	0x17a	; 0x17a <_Z17NIXIE_4BIT_1_SHOWh>
+	
+	NIXIE_4BIT_2_SHOW(C);
+ 1ca:	8d 2f       	mov	r24, r29
+ 1cc:	0e 94 af 00 	call	0x15e	; 0x15e <_Z17NIXIE_4BIT_2_SHOWh>
+	
+	NIXIE_4BIT_3_SHOW(D);
+ 1d0:	8c 2f       	mov	r24, r28
+ 1d2:	0e 94 a1 00 	call	0x142	; 0x142 <_Z17NIXIE_4BIT_3_SHOWh>
+	
+	
+}
+ 1d6:	df 91       	pop	r29
+ 1d8:	cf 91       	pop	r28
+ 1da:	1f 91       	pop	r17
+ 1dc:	08 95       	ret
+
+000001de <_Z18NIXIE_4BIT_SHOW_L1hhhh>:
+//********************四位数码管显示
+//******************用改变最后一个显示的顺序来平衡亮度
+void NIXIE_4BIT_SHOW_L1(uchar D ,uchar C ,uchar B ,uchar A)
+{
+ 1de:	1f 93       	push	r17
+ 1e0:	cf 93       	push	r28
+ 1e2:	df 93       	push	r29
+ 1e4:	c8 2f       	mov	r28, r24
+ 1e6:	d6 2f       	mov	r29, r22
+ 1e8:	14 2f       	mov	r17, r20
+ 1ea:	82 2f       	mov	r24, r18
+	NIXIE_4BIT_0_SHOW(A);
+ 1ec:	0e 94 cb 00 	call	0x196	; 0x196 <_Z17NIXIE_4BIT_0_SHOWh>
+	
+	NIXIE_4BIT_1_SHOW(B);
+ 1f0:	81 2f       	mov	r24, r17
+ 1f2:	0e 94 bd 00 	call	0x17a	; 0x17a <_Z17NIXIE_4BIT_1_SHOWh>
+	
+	NIXIE_4BIT_2_SHOW(C);
+ 1f6:	8d 2f       	mov	r24, r29
+ 1f8:	0e 94 af 00 	call	0x15e	; 0x15e <_Z17NIXIE_4BIT_2_SHOWh>
+	
+	NIXIE_4BIT_3_SHOW(D);
+ 1fc:	8c 2f       	mov	r24, r28
+ 1fe:	0e 94 a1 00 	call	0x142	; 0x142 <_Z17NIXIE_4BIT_3_SHOWh>
+	
+	
+}
+ 202:	df 91       	pop	r29
+ 204:	cf 91       	pop	r28
+ 206:	1f 91       	pop	r17
+ 208:	08 95       	ret
+
+0000020a <_Z18NIXIE_4BIT_SHOW_L2hhhh>:
+
+void NIXIE_4BIT_SHOW_L2(uchar D ,uchar C ,uchar B ,uchar A)
+{
+ 20a:	1f 93       	push	r17
+ 20c:	cf 93       	push	r28
+ 20e:	df 93       	push	r29
+ 210:	d8 2f       	mov	r29, r24
+ 212:	c6 2f       	mov	r28, r22
+ 214:	14 2f       	mov	r17, r20
+ 216:	82 2f       	mov	r24, r18
+	NIXIE_4BIT_0_SHOW(A);
+ 218:	0e 94 cb 00 	call	0x196	; 0x196 <_Z17NIXIE_4BIT_0_SHOWh>
+	
+	NIXIE_4BIT_1_SHOW(B);
+ 21c:	81 2f       	mov	r24, r17
+ 21e:	0e 94 bd 00 	call	0x17a	; 0x17a <_Z17NIXIE_4BIT_1_SHOWh>
+	
+	NIXIE_4BIT_3_SHOW(D);
+ 222:	8d 2f       	mov	r24, r29
+ 224:	0e 94 a1 00 	call	0x142	; 0x142 <_Z17NIXIE_4BIT_3_SHOWh>
+	
+	NIXIE_4BIT_2_SHOW(C);
+ 228:	8c 2f       	mov	r24, r28
+ 22a:	0e 94 af 00 	call	0x15e	; 0x15e <_Z17NIXIE_4BIT_2_SHOWh>
+	
+	
+}
+ 22e:	df 91       	pop	r29
+ 230:	cf 91       	pop	r28
+ 232:	1f 91       	pop	r17
+ 234:	08 95       	ret
+
+00000236 <_Z18NIXIE_4BIT_SHOW_L3hhhh>:
+
+void NIXIE_4BIT_SHOW_L3(uchar D ,uchar C ,uchar B ,uchar A)
+{
+ 236:	1f 93       	push	r17
+ 238:	cf 93       	push	r28
+ 23a:	df 93       	push	r29
+ 23c:	d8 2f       	mov	r29, r24
+ 23e:	16 2f       	mov	r17, r22
+ 240:	c4 2f       	mov	r28, r20
+ 242:	82 2f       	mov	r24, r18
+	NIXIE_4BIT_0_SHOW(A);
+ 244:	0e 94 cb 00 	call	0x196	; 0x196 <_Z17NIXIE_4BIT_0_SHOWh>
+	
+	NIXIE_4BIT_2_SHOW(C);
+ 248:	81 2f       	mov	r24, r17
+ 24a:	0e 94 af 00 	call	0x15e	; 0x15e <_Z17NIXIE_4BIT_2_SHOWh>
+	
+	NIXIE_4BIT_3_SHOW(D);
+ 24e:	8d 2f       	mov	r24, r29
+ 250:	0e 94 a1 00 	call	0x142	; 0x142 <_Z17NIXIE_4BIT_3_SHOWh>
+	
+	NIXIE_4BIT_1_SHOW(B);
+ 254:	8c 2f       	mov	r24, r28
+ 256:	0e 94 bd 00 	call	0x17a	; 0x17a <_Z17NIXIE_4BIT_1_SHOWh>
+	
+	
+}
+ 25a:	df 91       	pop	r29
+ 25c:	cf 91       	pop	r28
+ 25e:	1f 91       	pop	r17
+ 260:	08 95       	ret
+
+00000262 <_Z18NIXIE_4BIT_SHOW_L4hhhh>:
+
+void NIXIE_4BIT_SHOW_L4(uchar D ,uchar C ,uchar B ,uchar A)
+{
+ 262:	1f 93       	push	r17
+ 264:	cf 93       	push	r28
+ 266:	df 93       	push	r29
+ 268:	d8 2f       	mov	r29, r24
+ 26a:	16 2f       	mov	r17, r22
+ 26c:	84 2f       	mov	r24, r20
+ 26e:	c2 2f       	mov	r28, r18
+	
+	NIXIE_4BIT_1_SHOW(B);
+ 270:	0e 94 bd 00 	call	0x17a	; 0x17a <_Z17NIXIE_4BIT_1_SHOWh>
+	
+	NIXIE_4BIT_2_SHOW(C);
+ 274:	81 2f       	mov	r24, r17
+ 276:	0e 94 af 00 	call	0x15e	; 0x15e <_Z17NIXIE_4BIT_2_SHOWh>
+	
+	NIXIE_4BIT_3_SHOW(D);
+ 27a:	8d 2f       	mov	r24, r29
+ 27c:	0e 94 a1 00 	call	0x142	; 0x142 <_Z17NIXIE_4BIT_3_SHOWh>
+	
+	NIXIE_4BIT_0_SHOW(A);
+ 280:	8c 2f       	mov	r24, r28
+ 282:	0e 94 cb 00 	call	0x196	; 0x196 <_Z17NIXIE_4BIT_0_SHOWh>
+	
+}
+ 286:	df 91       	pop	r29
+ 288:	cf 91       	pop	r28
+ 28a:	1f 91       	pop	r17
+ 28c:	08 95       	ret
+
+0000028e <_Z22TIMER0_NORMAL_PWM_INITv>:
+void TIMER0_NORMAL_PWM_INIT()
+{
+	//端口初始化
+	//PWM_TIMER0_DDR |= (1 << PWM_TIMER0_OUT); 
+	//计数器初始化
+	TCNT0=0x00;
+ 28e:	12 be       	out	0x32, r1	; 50
+	//OCR0 = 0X01;//***避免与bottom相同时候特殊情况
+	//中断初始化
+	TIMSK |= 1 << TOIE0;
+ 290:	89 b7       	in	r24, 0x39	; 57
+ 292:	81 60       	ori	r24, 0x01	; 1
+ 294:	89 bf       	out	0x39, r24	; 57
+	//快速PWM模式设置
+	TCCR0 |= (1 << COM00) | (1 << CS00) | (1 << CS02);//设置为普通PWM；匹配时将取反；1024分频
+ 296:	83 b7       	in	r24, 0x33	; 51
+ 298:	85 61       	ori	r24, 0x15	; 21
+ 29a:	83 bf       	out	0x33, r24	; 51
+	
+	
+}
+ 29c:	08 95       	ret
+
+0000029e <_Z27TIMER0_NORMAL_PWM_TCNT0_setf>:
+//**************************************************************
+
+
+void TIMER0_NORMAL_PWM_TCNT0_set(float compare_time)
+{
+	TCNT0 = 256 - F_CPU/1024 * compare_time;
+ 29e:	20 e0       	ldi	r18, 0x00	; 0
+ 2a0:	30 e0       	ldi	r19, 0x00	; 0
+ 2a2:	41 ee       	ldi	r20, 0xE1	; 225
+ 2a4:	55 e4       	ldi	r21, 0x45	; 69
+ 2a6:	0e 94 a2 03 	call	0x744	; 0x744 <__mulsf3>
+ 2aa:	9b 01       	movw	r18, r22
+ 2ac:	ac 01       	movw	r20, r24
+ 2ae:	60 e0       	ldi	r22, 0x00	; 0
+ 2b0:	70 e0       	ldi	r23, 0x00	; 0
+ 2b2:	80 e8       	ldi	r24, 0x80	; 128
+ 2b4:	93 e4       	ldi	r25, 0x43	; 67
+ 2b6:	0e 94 c0 02 	call	0x580	; 0x580 <__subsf3>
+ 2ba:	0e 94 25 03 	call	0x64a	; 0x64a <__fixunssfsi>
+ 2be:	62 bf       	out	0x32, r22	; 50
+	
+}
+ 2c0:	08 95       	ret
+
+000002c2 <_Z24TIMER0_NORMAL_PWM_SEARCHv>:
+//*****************F_CPU/1024 * compare_time 不大于255******
+//**************一般compare_time取0.01 在中断中累加或者用TIMER1
+//**************************************************************
+void TIMER0_NORMAL_PWM_SEARCH()
+{
+	while(!(TIFR & ~(1 << TOV0)));//***********等待置位
+ 2c2:	88 b7       	in	r24, 0x38	; 56
+ 2c4:	8e 7f       	andi	r24, 0xFE	; 254
+ 2c6:	e9 f3       	breq	.-6      	; 0x2c2 <_Z24TIMER0_NORMAL_PWM_SEARCHv>
+	
+	TIFR |= 1 << TOV0;//***************写1清零
+ 2c8:	88 b7       	in	r24, 0x38	; 56
+ 2ca:	81 60       	ori	r24, 0x01	; 1
+ 2cc:	88 bf       	out	0x38, r24	; 56
+	
+	
+	
+}
+ 2ce:	08 95       	ret
+
+000002d0 <_Z24TIMER0_FASTPWM_OCR0_initv>:
+
+//**********************FAST PWM OCR0模式初始化*******************//
+void TIMER0_FASTPWM_OCR0_init()
+{
+	//端口初始化
+	PWM_TIMER0_DDR|=(1<<PWM_TIMER0_OUT); 
+ 2d0:	bb 9a       	sbi	0x17, 3	; 23
+	//计数器初始化
+	TCNT0=0x00;OCR0 = 0X01;//***避免与bottom相同时候特殊情况
+ 2d2:	12 be       	out	0x32, r1	; 50
+ 2d4:	81 e0       	ldi	r24, 0x01	; 1
+ 2d6:	8c bf       	out	0x3c, r24	; 60
+	//中断初始化
+	TIMSK |= (1<<OCIE0)|(1<<TOIE0);
+ 2d8:	89 b7       	in	r24, 0x39	; 57
+ 2da:	83 60       	ori	r24, 0x03	; 3
+ 2dc:	89 bf       	out	0x39, r24	; 57
+	//快速PWM模式设置
+	TCCR0 |= (1 << WGM00) | (1 << WGM01) | (1 << COM01) | (1 << COM00) | (1 << CS01);//设置为快速PWM；与OCR0匹配时将清零；8分频
+ 2de:	83 b7       	in	r24, 0x33	; 51
+ 2e0:	8a 67       	ori	r24, 0x7A	; 122
+ 2e2:	83 bf       	out	0x33, r24	; 51
+	
+	
+}
+ 2e4:	08 95       	ret
+
+000002e6 <_Z24TIMER0_FASTPWMA_OCR0_setf>:
+//********************FAST PWM ICR0模式时间设定*********************//
+void TIMER0_FASTPWMA_OCR0_set(float compare_time)
+{
+	OCR0=F_CPU/8*compare_time;
+ 2e6:	20 e0       	ldi	r18, 0x00	; 0
+ 2e8:	30 e0       	ldi	r19, 0x00	; 0
+ 2ea:	41 e6       	ldi	r20, 0x61	; 97
+ 2ec:	59 e4       	ldi	r21, 0x49	; 73
+ 2ee:	0e 94 a2 03 	call	0x744	; 0x744 <__mulsf3>
+ 2f2:	0e 94 25 03 	call	0x64a	; 0x64a <__fixunssfsi>
+ 2f6:	6c bf       	out	0x3c, r22	; 60
+	
+}
+ 2f8:	08 95       	ret
+
+000002fa <_Z22TIMER1_NORMAL_PWM_INITv>:
+void TIMER1_NORMAL_PWM_INIT()
+{
+	//端口初始化
+	//PWM_TIMER1_DDR |= (1<<PWM_TIMER1_OUTA);  PWM_TIMER1_PORT &= ~(1 << PWM_TIMER1_OUTA);
+	//计数器初始化
+	TCNT1 = 0x00;
+ 2fa:	1d bc       	out	0x2d, r1	; 45
+ 2fc:	1c bc       	out	0x2c, r1	; 44
+	//中断初始化
+	TIMSK |= 1<<TOIE1;
+ 2fe:	89 b7       	in	r24, 0x39	; 57
+ 300:	84 60       	ori	r24, 0x04	; 4
+ 302:	89 bf       	out	0x39, r24	; 57
+	//普通PWM模式设置
+	//TCCR1A |= 1<<COM1A1;//比较匹配清零 TOP置位
+	TCCR1B |= (1<<CS10)|(1<<CS12);//1024分频
+ 304:	8e b5       	in	r24, 0x2e	; 46
+ 306:	85 60       	ori	r24, 0x05	; 5
+ 308:	8e bd       	out	0x2e, r24	; 46
+	
+	
+}
+ 30a:	08 95       	ret
+
+0000030c <_Z21TIMER1_NORMAL_PWM_setf>:
+//********************TIMER1 NORMAL PWM 模式时间设定*********************//
+void TIMER1_NORMAL_PWM_set(float compare_time)
+{
+	TCNT1 = 65536 - F_CPU/1024*compare_time;
+ 30c:	20 e0       	ldi	r18, 0x00	; 0
+ 30e:	30 e0       	ldi	r19, 0x00	; 0
+ 310:	41 ee       	ldi	r20, 0xE1	; 225
+ 312:	55 e4       	ldi	r21, 0x45	; 69
+ 314:	0e 94 a2 03 	call	0x744	; 0x744 <__mulsf3>
+ 318:	9b 01       	movw	r18, r22
+ 31a:	ac 01       	movw	r20, r24
+ 31c:	60 e0       	ldi	r22, 0x00	; 0
+ 31e:	70 e0       	ldi	r23, 0x00	; 0
+ 320:	80 e8       	ldi	r24, 0x80	; 128
+ 322:	97 e4       	ldi	r25, 0x47	; 71
+ 324:	0e 94 c0 02 	call	0x580	; 0x580 <__subsf3>
+ 328:	0e 94 25 03 	call	0x64a	; 0x64a <__fixunssfsi>
+ 32c:	dc 01       	movw	r26, r24
+ 32e:	cb 01       	movw	r24, r22
+ 330:	9d bd       	out	0x2d, r25	; 45
+ 332:	8c bd       	out	0x2c, r24	; 44
+	
+}
+ 334:	08 95       	ret
+
+00000336 <_Z25TIMER1_FASTPWMA_ICR1_initv>:
+
+//**********************FAST PWM ICR1模式初始化*******************//
+void TIMER1_FASTPWMA_ICR1_init()
+{
+	//端口初始化
+	PWM_TIMER1_DDR |= (1<<PWM_TIMER1_OUTA);  PWM_TIMER1_PORT &= ~(1 << PWM_TIMER1_OUTA);
+ 336:	8d 9a       	sbi	0x11, 5	; 17
+ 338:	95 98       	cbi	0x12, 5	; 18
+	//计数器初始化
+	TCNT1 = 0x00;
+ 33a:	1d bc       	out	0x2d, r1	; 45
+ 33c:	1c bc       	out	0x2c, r1	; 44
+	//中断初始化
+	TIMSK |= (1<<OCIE1A)|(1<<TOIE1);
+ 33e:	89 b7       	in	r24, 0x39	; 57
+ 340:	84 61       	ori	r24, 0x14	; 20
+ 342:	89 bf       	out	0x39, r24	; 57
+	//快速PWM模式设置
+	TCCR1A |= (1<<COM1A1)|(1<<WGM11);//比较匹配清零 TOP置位 
+ 344:	8f b5       	in	r24, 0x2f	; 47
+ 346:	82 68       	ori	r24, 0x82	; 130
+ 348:	8f bd       	out	0x2f, r24	; 47
+	TCCR1B |= (1<<WGM12)|(1<<WGM13)|(1<<CS10)|(1<<CS12);//TOP为ICR1的值 1024分频
+ 34a:	8e b5       	in	r24, 0x2e	; 46
+ 34c:	8d 61       	ori	r24, 0x1D	; 29
+ 34e:	8e bd       	out	0x2e, r24	; 46
+	
+	
+}
+ 350:	08 95       	ret
+
+00000352 <_Z24TIMER1_FASTPWMA_ICR1_setff>:
+//********************FAST PWM ICR1模式时间设定*********************//
+void TIMER1_FASTPWMA_ICR1_set(float compare_time,float top_time)
+{
+ 352:	cf 92       	push	r12
+ 354:	df 92       	push	r13
+ 356:	ef 92       	push	r14
+ 358:	ff 92       	push	r15
+ 35a:	69 01       	movw	r12, r18
+ 35c:	7a 01       	movw	r14, r20
+	OCR1A=F_CPU/1024*compare_time;
+ 35e:	20 e0       	ldi	r18, 0x00	; 0
+ 360:	30 e0       	ldi	r19, 0x00	; 0
+ 362:	41 ee       	ldi	r20, 0xE1	; 225
+ 364:	55 e4       	ldi	r21, 0x45	; 69
+ 366:	0e 94 a2 03 	call	0x744	; 0x744 <__mulsf3>
+ 36a:	0e 94 25 03 	call	0x64a	; 0x64a <__fixunssfsi>
+ 36e:	dc 01       	movw	r26, r24
+ 370:	cb 01       	movw	r24, r22
+ 372:	9b bd       	out	0x2b, r25	; 43
+ 374:	8a bd       	out	0x2a, r24	; 42
+	ICR1=F_CPU/1024*top_time;
+ 376:	c7 01       	movw	r24, r14
+ 378:	b6 01       	movw	r22, r12
+ 37a:	20 e0       	ldi	r18, 0x00	; 0
+ 37c:	30 e0       	ldi	r19, 0x00	; 0
+ 37e:	41 ee       	ldi	r20, 0xE1	; 225
+ 380:	55 e4       	ldi	r21, 0x45	; 69
+ 382:	0e 94 a2 03 	call	0x744	; 0x744 <__mulsf3>
+ 386:	0e 94 25 03 	call	0x64a	; 0x64a <__fixunssfsi>
+ 38a:	dc 01       	movw	r26, r24
+ 38c:	cb 01       	movw	r24, r22
+ 38e:	97 bd       	out	0x27, r25	; 39
+ 390:	86 bd       	out	0x26, r24	; 38
+}
+ 392:	ff 90       	pop	r15
+ 394:	ef 90       	pop	r14
+ 396:	df 90       	pop	r13
+ 398:	cf 90       	pop	r12
+ 39a:	08 95       	ret
+
+0000039c <_Z31TIMER1_PHASE_CORRECTION_10_initv>:
+
+//**********************十位相位修正PWM模式初始化*******************//
+void TIMER1_PHASE_CORRECTION_10_init()
+{
+	//端口初始化
+	PWM_TIMER1_DDR |= (1<<PWM_TIMER1_OUTA);  PWM_TIMER1_PORT &= ~(1 << PWM_TIMER1_OUTA);
+ 39c:	8d 9a       	sbi	0x11, 5	; 17
+ 39e:	95 98       	cbi	0x12, 5	; 18
+	//计数器初始化
+	TCNT1 = 0x00;OCR1A = 0X00;
+ 3a0:	1d bc       	out	0x2d, r1	; 45
+ 3a2:	1c bc       	out	0x2c, r1	; 44
+ 3a4:	1b bc       	out	0x2b, r1	; 43
+ 3a6:	1a bc       	out	0x2a, r1	; 42
+	//中断初始化
+	TIMSK |= (1<<OCIE1A)|(1<<TOIE1);
+ 3a8:	89 b7       	in	r24, 0x39	; 57
+ 3aa:	84 61       	ori	r24, 0x14	; 20
+ 3ac:	89 bf       	out	0x39, r24	; 57
+	//快速PWM模式设置
+	TCCR1A |= (1<<COM1A1)|(1<<WGM11)|(1<<WGM10);//比较匹配清零 TOP置位
+ 3ae:	8f b5       	in	r24, 0x2f	; 47
+ 3b0:	83 68       	ori	r24, 0x83	; 131
+ 3b2:	8f bd       	out	0x2f, r24	; 47
+	TCCR1B |= (1<<CS11);//TOP为ICR1的值 8分频
+ 3b4:	8e b5       	in	r24, 0x2e	; 46
+ 3b6:	82 60       	ori	r24, 0x02	; 2
+ 3b8:	8e bd       	out	0x2e, r24	; 46
+	
+	
+}
+ 3ba:	08 95       	ret
+
+000003bc <_Z22TIMER2_NORMAL_PWM_INITv>:
+void TIMER2_NORMAL_PWM_INIT()
+{
+	//端口初始化
+	//PWM_TIMER1_DDR |= (1<<PWM_TIMER1_OUTA);  PWM_TIMER1_PORT &= ~(1 << PWM_TIMER1_OUTA);
+	//计数器初始化
+	TCNT2 = 0x00;
+ 3bc:	14 bc       	out	0x24, r1	; 36
+	//中断初始化
+	TIMSK |= 1<<TOIE2;
+ 3be:	89 b7       	in	r24, 0x39	; 57
+ 3c0:	80 64       	ori	r24, 0x40	; 64
+ 3c2:	89 bf       	out	0x39, r24	; 57
+	//普通PWM模式设置
+	//TCCR2 |= 1<<COM20;//比较匹配取反
+	TCCR2 |= (1 << CS22) | (1 << CS21) | (1 << CS20);//1024分频
+ 3c4:	85 b5       	in	r24, 0x25	; 37
+ 3c6:	87 60       	ori	r24, 0x07	; 7
+ 3c8:	85 bd       	out	0x25, r24	; 37
+	
+	
+}
+ 3ca:	08 95       	ret
+
+000003cc <_Z21TIMER2_NORMAL_PWM_setf>:
+//********************TIMER1 NORMAL PWM 模式时间设定*********************//
+void TIMER2_NORMAL_PWM_set(float compare_time)
+{
+	TCNT2 = 256 - F_CPU/1024*compare_time;
+ 3cc:	20 e0       	ldi	r18, 0x00	; 0
+ 3ce:	30 e0       	ldi	r19, 0x00	; 0
+ 3d0:	41 ee       	ldi	r20, 0xE1	; 225
+ 3d2:	55 e4       	ldi	r21, 0x45	; 69
+ 3d4:	0e 94 a2 03 	call	0x744	; 0x744 <__mulsf3>
+ 3d8:	9b 01       	movw	r18, r22
+ 3da:	ac 01       	movw	r20, r24
+ 3dc:	60 e0       	ldi	r22, 0x00	; 0
+ 3de:	70 e0       	ldi	r23, 0x00	; 0
+ 3e0:	80 e8       	ldi	r24, 0x80	; 128
+ 3e2:	93 e4       	ldi	r25, 0x43	; 67
+ 3e4:	0e 94 c0 02 	call	0x580	; 0x580 <__subsf3>
+ 3e8:	0e 94 25 03 	call	0x64a	; 0x64a <__fixunssfsi>
+ 3ec:	64 bd       	out	0x24, r22	; 36
+	
+}
+ 3ee:	08 95       	ret
+
+000003f0 <__vector_4>:
+uchar SECOND,MINUTE = 0;
+
+uchar LIST_NIXIE = 0;
+
+ISR(TIMER2_OVF_vect)
+{
+ 3f0:	1f 92       	push	r1
+ 3f2:	0f 92       	push	r0
+ 3f4:	0f b6       	in	r0, 0x3f	; 63
+ 3f6:	0f 92       	push	r0
+ 3f8:	11 24       	eor	r1, r1
+ 3fa:	2f 93       	push	r18
+ 3fc:	3f 93       	push	r19
+ 3fe:	4f 93       	push	r20
+ 400:	5f 93       	push	r21
+ 402:	6f 93       	push	r22
+ 404:	7f 93       	push	r23
+ 406:	8f 93       	push	r24
+ 408:	9f 93       	push	r25
+ 40a:	af 93       	push	r26
+ 40c:	bf 93       	push	r27
+ 40e:	ef 93       	push	r30
+ 410:	ff 93       	push	r31
+	cli();
+ 412:	f8 94       	cli
+	
+	TIMER2_NORMAL_PWM_set(0.004);
+ 414:	6f e6       	ldi	r22, 0x6F	; 111
+ 416:	72 e1       	ldi	r23, 0x12	; 18
+ 418:	83 e8       	ldi	r24, 0x83	; 131
+ 41a:	9b e3       	ldi	r25, 0x3B	; 59
+ 41c:	0e 94 e6 01 	call	0x3cc	; 0x3cc <_Z21TIMER2_NORMAL_PWM_setf>
+	
+	switch(LIST_NIXIE)
+ 420:	80 91 72 00 	lds	r24, 0x0072
+ 424:	81 30       	cpi	r24, 0x01	; 1
+ 426:	b9 f0       	breq	.+46     	; 0x456 <__vector_4+0x66>
+ 428:	81 30       	cpi	r24, 0x01	; 1
+ 42a:	30 f0       	brcs	.+12     	; 0x438 <__vector_4+0x48>
+ 42c:	82 30       	cpi	r24, 0x02	; 2
+ 42e:	11 f1       	breq	.+68     	; 0x474 <__stack+0x15>
+ 430:	83 30       	cpi	r24, 0x03	; 3
+ 432:	09 f0       	breq	.+2      	; 0x436 <__vector_4+0x46>
+ 434:	3b c0       	rjmp	.+118    	; 0x4ac <__stack+0x4d>
+ 436:	2d c0       	rjmp	.+90     	; 0x492 <__stack+0x33>
+	
+	{
+		case 0: NIXIE_4BIT_SHOW_L1(TIME[3],TIME[2],TIME[1],TIME[0]);
+ 438:	80 91 79 00 	lds	r24, 0x0079
+ 43c:	60 91 78 00 	lds	r22, 0x0078
+ 440:	40 91 77 00 	lds	r20, 0x0077
+ 444:	20 91 76 00 	lds	r18, 0x0076
+ 448:	0e 94 ef 00 	call	0x1de	; 0x1de <_Z18NIXIE_4BIT_SHOW_L1hhhh>
+		
+		sei();
+ 44c:	78 94       	sei
+		
+		LIST_NIXIE = 1;
+ 44e:	81 e0       	ldi	r24, 0x01	; 1
+ 450:	80 93 72 00 	sts	0x0072, r24
+		
+		break;
+ 454:	2b c0       	rjmp	.+86     	; 0x4ac <__stack+0x4d>
+		
+		
+		case 1: NIXIE_4BIT_SHOW_L2(TIME[3],TIME[2],TIME[1],TIME[0]);
+ 456:	80 91 79 00 	lds	r24, 0x0079
+ 45a:	60 91 78 00 	lds	r22, 0x0078
+ 45e:	40 91 77 00 	lds	r20, 0x0077
+ 462:	20 91 76 00 	lds	r18, 0x0076
+ 466:	0e 94 05 01 	call	0x20a	; 0x20a <_Z18NIXIE_4BIT_SHOW_L2hhhh>
+		
+		sei();
+ 46a:	78 94       	sei
+		
+		LIST_NIXIE = 2;
+ 46c:	82 e0       	ldi	r24, 0x02	; 2
+ 46e:	80 93 72 00 	sts	0x0072, r24
+		
+		break;
+ 472:	1c c0       	rjmp	.+56     	; 0x4ac <__stack+0x4d>
+		
+		
+		case 2: NIXIE_4BIT_SHOW_L3(TIME[3],TIME[2],TIME[1],TIME[0]);
+ 474:	80 91 79 00 	lds	r24, 0x0079
+ 478:	60 91 78 00 	lds	r22, 0x0078
+ 47c:	40 91 77 00 	lds	r20, 0x0077
+ 480:	20 91 76 00 	lds	r18, 0x0076
+ 484:	0e 94 1b 01 	call	0x236	; 0x236 <_Z18NIXIE_4BIT_SHOW_L3hhhh>
+		
+		sei();
+ 488:	78 94       	sei
+		
+		LIST_NIXIE = 3;
+ 48a:	83 e0       	ldi	r24, 0x03	; 3
+ 48c:	80 93 72 00 	sts	0x0072, r24
+		
+		break;
+ 490:	0d c0       	rjmp	.+26     	; 0x4ac <__stack+0x4d>
+		
+		
+		case 3: NIXIE_4BIT_SHOW_L4(TIME[3],TIME[2],TIME[1],TIME[0]);
+ 492:	80 91 79 00 	lds	r24, 0x0079
+ 496:	60 91 78 00 	lds	r22, 0x0078
+ 49a:	40 91 77 00 	lds	r20, 0x0077
+ 49e:	20 91 76 00 	lds	r18, 0x0076
+ 4a2:	0e 94 31 01 	call	0x262	; 0x262 <_Z18NIXIE_4BIT_SHOW_L4hhhh>
+		
+		sei();
+ 4a6:	78 94       	sei
+		
+		LIST_NIXIE = 0;
+ 4a8:	10 92 72 00 	sts	0x0072, r1
+		break;
+		
+		
+	}
+	
+}
+ 4ac:	ff 91       	pop	r31
+ 4ae:	ef 91       	pop	r30
+ 4b0:	bf 91       	pop	r27
+ 4b2:	af 91       	pop	r26
+ 4b4:	9f 91       	pop	r25
+ 4b6:	8f 91       	pop	r24
+ 4b8:	7f 91       	pop	r23
+ 4ba:	6f 91       	pop	r22
+ 4bc:	5f 91       	pop	r21
+ 4be:	4f 91       	pop	r20
+ 4c0:	3f 91       	pop	r19
+ 4c2:	2f 91       	pop	r18
+ 4c4:	0f 90       	pop	r0
+ 4c6:	0f be       	out	0x3f, r0	; 63
+ 4c8:	0f 90       	pop	r0
+ 4ca:	1f 90       	pop	r1
+ 4cc:	18 95       	reti
+
+000004ce <__vector_8>:
+
+
+
+ISR(TIMER1_OVF_vect)
+{
+ 4ce:	1f 92       	push	r1
+ 4d0:	0f 92       	push	r0
+ 4d2:	0f b6       	in	r0, 0x3f	; 63
+ 4d4:	0f 92       	push	r0
+ 4d6:	11 24       	eor	r1, r1
+ 4d8:	2f 93       	push	r18
+ 4da:	3f 93       	push	r19
+ 4dc:	4f 93       	push	r20
+ 4de:	5f 93       	push	r21
+ 4e0:	6f 93       	push	r22
+ 4e2:	7f 93       	push	r23
+ 4e4:	8f 93       	push	r24
+ 4e6:	9f 93       	push	r25
+ 4e8:	af 93       	push	r26
+ 4ea:	bf 93       	push	r27
+ 4ec:	ef 93       	push	r30
+ 4ee:	ff 93       	push	r31
+	TIMER1_NORMAL_PWM_set(1);
+ 4f0:	60 e0       	ldi	r22, 0x00	; 0
+ 4f2:	70 e0       	ldi	r23, 0x00	; 0
+ 4f4:	80 e8       	ldi	r24, 0x80	; 128
+ 4f6:	9f e3       	ldi	r25, 0x3F	; 63
+ 4f8:	0e 94 86 01 	call	0x30c	; 0x30c <_Z21TIMER1_NORMAL_PWM_setf>
+	
+	++ TIME_NOW;
+ 4fc:	80 91 75 00 	lds	r24, 0x0075
+ 500:	8f 5f       	subi	r24, 0xFF	; 255
+ 502:	80 93 75 00 	sts	0x0075, r24
+	
+	MINUTE = TIME_NOW / 60;
+ 506:	6c e3       	ldi	r22, 0x3C	; 60
+ 508:	0e 94 05 04 	call	0x80a	; 0x80a <__udivmodqi4>
+ 50c:	38 2f       	mov	r19, r24
+ 50e:	89 2f       	mov	r24, r25
+ 510:	30 93 73 00 	sts	0x0073, r19
+	
+	SECOND = TIME_NOW % 60;
+ 514:	90 93 74 00 	sts	0x0074, r25
+	
+	TIME[0] = SECOND % 10;
+ 518:	2a e0       	ldi	r18, 0x0A	; 10
+ 51a:	62 2f       	mov	r22, r18
+ 51c:	0e 94 05 04 	call	0x80a	; 0x80a <__udivmodqi4>
+ 520:	90 93 76 00 	sts	0x0076, r25
+	
+	TIME[1] = SECOND / 10;
+ 524:	80 93 77 00 	sts	0x0077, r24
+	
+	TIME[2] = MINUTE % 10;
+ 528:	83 2f       	mov	r24, r19
+ 52a:	0e 94 05 04 	call	0x80a	; 0x80a <__udivmodqi4>
+ 52e:	90 93 78 00 	sts	0x0078, r25
+	
+	TIME[3] = MINUTE / 10;
+ 532:	80 93 79 00 	sts	0x0079, r24
+	if (TIME_NOW == 3600)
+	{
+		TIME_NOW = 0;
+	}
+	
+}
+ 536:	ff 91       	pop	r31
+ 538:	ef 91       	pop	r30
+ 53a:	bf 91       	pop	r27
+ 53c:	af 91       	pop	r26
+ 53e:	9f 91       	pop	r25
+ 540:	8f 91       	pop	r24
+ 542:	7f 91       	pop	r23
+ 544:	6f 91       	pop	r22
+ 546:	5f 91       	pop	r21
+ 548:	4f 91       	pop	r20
+ 54a:	3f 91       	pop	r19
+ 54c:	2f 91       	pop	r18
+ 54e:	0f 90       	pop	r0
+ 550:	0f be       	out	0x3f, r0	; 63
+ 552:	0f 90       	pop	r0
+ 554:	1f 90       	pop	r1
+ 556:	18 95       	reti
+
+00000558 <main>:
+
+
+int main(void)
+{
+	
+	TIMER2_NORMAL_PWM_INIT();
+ 558:	0e 94 de 01 	call	0x3bc	; 0x3bc <_Z22TIMER2_NORMAL_PWM_INITv>
+	
+	TIMER2_NORMAL_PWM_set(0.004);
+ 55c:	6f e6       	ldi	r22, 0x6F	; 111
+ 55e:	72 e1       	ldi	r23, 0x12	; 18
+ 560:	83 e8       	ldi	r24, 0x83	; 131
+ 562:	9b e3       	ldi	r25, 0x3B	; 59
+ 564:	0e 94 e6 01 	call	0x3cc	; 0x3cc <_Z21TIMER2_NORMAL_PWM_setf>
+	
+	TIMER1_NORMAL_PWM_INIT();
+ 568:	0e 94 7d 01 	call	0x2fa	; 0x2fa <_Z22TIMER1_NORMAL_PWM_INITv>
+	
+	TIMER1_NORMAL_PWM_set(1);
+ 56c:	60 e0       	ldi	r22, 0x00	; 0
+ 56e:	70 e0       	ldi	r23, 0x00	; 0
+ 570:	80 e8       	ldi	r24, 0x80	; 128
+ 572:	9f e3       	ldi	r25, 0x3F	; 63
+ 574:	0e 94 86 01 	call	0x30c	; 0x30c <_Z21TIMER1_NORMAL_PWM_setf>
+	
+	NIXIE_4BIT_INIT();
+ 578:	0e 94 99 00 	call	0x132	; 0x132 <_Z15NIXIE_4BIT_INITv>
+	
+	
+	
+	sei();
+ 57c:	78 94       	sei
+ 57e:	ff cf       	rjmp	.-2      	; 0x57e <main+0x26>
+
+00000580 <__subsf3>:
+ 580:	50 58       	subi	r21, 0x80	; 128
+
+00000582 <__addsf3>:
+ 582:	bb 27       	eor	r27, r27
+ 584:	aa 27       	eor	r26, r26
+ 586:	0e d0       	rcall	.+28     	; 0x5a4 <__addsf3x>
+ 588:	a3 c0       	rjmp	.+326    	; 0x6d0 <__fp_round>
+ 58a:	94 d0       	rcall	.+296    	; 0x6b4 <__fp_pscA>
+ 58c:	30 f0       	brcs	.+12     	; 0x59a <__addsf3+0x18>
+ 58e:	99 d0       	rcall	.+306    	; 0x6c2 <__fp_pscB>
+ 590:	20 f0       	brcs	.+8      	; 0x59a <__addsf3+0x18>
+ 592:	31 f4       	brne	.+12     	; 0x5a0 <__addsf3+0x1e>
+ 594:	9f 3f       	cpi	r25, 0xFF	; 255
+ 596:	11 f4       	brne	.+4      	; 0x59c <__addsf3+0x1a>
+ 598:	1e f4       	brtc	.+6      	; 0x5a0 <__addsf3+0x1e>
+ 59a:	89 c0       	rjmp	.+274    	; 0x6ae <__fp_nan>
+ 59c:	0e f4       	brtc	.+2      	; 0x5a0 <__addsf3+0x1e>
+ 59e:	e0 95       	com	r30
+ 5a0:	e7 fb       	bst	r30, 7
+ 5a2:	7f c0       	rjmp	.+254    	; 0x6a2 <__fp_inf>
+
+000005a4 <__addsf3x>:
+ 5a4:	e9 2f       	mov	r30, r25
+ 5a6:	a5 d0       	rcall	.+330    	; 0x6f2 <__fp_split3>
+ 5a8:	80 f3       	brcs	.-32     	; 0x58a <__addsf3+0x8>
+ 5aa:	ba 17       	cp	r27, r26
+ 5ac:	62 07       	cpc	r22, r18
+ 5ae:	73 07       	cpc	r23, r19
+ 5b0:	84 07       	cpc	r24, r20
+ 5b2:	95 07       	cpc	r25, r21
+ 5b4:	18 f0       	brcs	.+6      	; 0x5bc <__addsf3x+0x18>
+ 5b6:	71 f4       	brne	.+28     	; 0x5d4 <__addsf3x+0x30>
+ 5b8:	9e f5       	brtc	.+102    	; 0x620 <__addsf3x+0x7c>
+ 5ba:	bd c0       	rjmp	.+378    	; 0x736 <__fp_zero>
+ 5bc:	0e f4       	brtc	.+2      	; 0x5c0 <__addsf3x+0x1c>
+ 5be:	e0 95       	com	r30
+ 5c0:	0b 2e       	mov	r0, r27
+ 5c2:	ba 2f       	mov	r27, r26
+ 5c4:	a0 2d       	mov	r26, r0
+ 5c6:	0b 01       	movw	r0, r22
+ 5c8:	b9 01       	movw	r22, r18
+ 5ca:	90 01       	movw	r18, r0
+ 5cc:	0c 01       	movw	r0, r24
+ 5ce:	ca 01       	movw	r24, r20
+ 5d0:	a0 01       	movw	r20, r0
+ 5d2:	11 24       	eor	r1, r1
+ 5d4:	ff 27       	eor	r31, r31
+ 5d6:	59 1b       	sub	r21, r25
+ 5d8:	99 f0       	breq	.+38     	; 0x600 <__addsf3x+0x5c>
+ 5da:	59 3f       	cpi	r21, 0xF9	; 249
+ 5dc:	50 f4       	brcc	.+20     	; 0x5f2 <__addsf3x+0x4e>
+ 5de:	50 3e       	cpi	r21, 0xE0	; 224
+ 5e0:	68 f1       	brcs	.+90     	; 0x63c <__addsf3x+0x98>
+ 5e2:	1a 16       	cp	r1, r26
+ 5e4:	f0 40       	sbci	r31, 0x00	; 0
+ 5e6:	a2 2f       	mov	r26, r18
+ 5e8:	23 2f       	mov	r18, r19
+ 5ea:	34 2f       	mov	r19, r20
+ 5ec:	44 27       	eor	r20, r20
+ 5ee:	58 5f       	subi	r21, 0xF8	; 248
+ 5f0:	f3 cf       	rjmp	.-26     	; 0x5d8 <__addsf3x+0x34>
+ 5f2:	46 95       	lsr	r20
+ 5f4:	37 95       	ror	r19
+ 5f6:	27 95       	ror	r18
+ 5f8:	a7 95       	ror	r26
+ 5fa:	f0 40       	sbci	r31, 0x00	; 0
+ 5fc:	53 95       	inc	r21
+ 5fe:	c9 f7       	brne	.-14     	; 0x5f2 <__addsf3x+0x4e>
+ 600:	7e f4       	brtc	.+30     	; 0x620 <__addsf3x+0x7c>
+ 602:	1f 16       	cp	r1, r31
+ 604:	ba 0b       	sbc	r27, r26
+ 606:	62 0b       	sbc	r22, r18
+ 608:	73 0b       	sbc	r23, r19
+ 60a:	84 0b       	sbc	r24, r20
+ 60c:	ba f0       	brmi	.+46     	; 0x63c <__addsf3x+0x98>
+ 60e:	91 50       	subi	r25, 0x01	; 1
+ 610:	a1 f0       	breq	.+40     	; 0x63a <__addsf3x+0x96>
+ 612:	ff 0f       	add	r31, r31
+ 614:	bb 1f       	adc	r27, r27
+ 616:	66 1f       	adc	r22, r22
+ 618:	77 1f       	adc	r23, r23
+ 61a:	88 1f       	adc	r24, r24
+ 61c:	c2 f7       	brpl	.-16     	; 0x60e <__addsf3x+0x6a>
+ 61e:	0e c0       	rjmp	.+28     	; 0x63c <__addsf3x+0x98>
+ 620:	ba 0f       	add	r27, r26
+ 622:	62 1f       	adc	r22, r18
+ 624:	73 1f       	adc	r23, r19
+ 626:	84 1f       	adc	r24, r20
+ 628:	48 f4       	brcc	.+18     	; 0x63c <__addsf3x+0x98>
+ 62a:	87 95       	ror	r24
+ 62c:	77 95       	ror	r23
+ 62e:	67 95       	ror	r22
+ 630:	b7 95       	ror	r27
+ 632:	f7 95       	ror	r31
+ 634:	9e 3f       	cpi	r25, 0xFE	; 254
+ 636:	08 f0       	brcs	.+2      	; 0x63a <__addsf3x+0x96>
+ 638:	b3 cf       	rjmp	.-154    	; 0x5a0 <__addsf3+0x1e>
+ 63a:	93 95       	inc	r25
+ 63c:	88 0f       	add	r24, r24
+ 63e:	08 f0       	brcs	.+2      	; 0x642 <__addsf3x+0x9e>
+ 640:	99 27       	eor	r25, r25
+ 642:	ee 0f       	add	r30, r30
+ 644:	97 95       	ror	r25
+ 646:	87 95       	ror	r24
+ 648:	08 95       	ret
+
+0000064a <__fixunssfsi>:
+ 64a:	5b d0       	rcall	.+182    	; 0x702 <__fp_splitA>
+ 64c:	88 f0       	brcs	.+34     	; 0x670 <__fixunssfsi+0x26>
+ 64e:	9f 57       	subi	r25, 0x7F	; 127
+ 650:	90 f0       	brcs	.+36     	; 0x676 <__fixunssfsi+0x2c>
+ 652:	b9 2f       	mov	r27, r25
+ 654:	99 27       	eor	r25, r25
+ 656:	b7 51       	subi	r27, 0x17	; 23
+ 658:	a0 f0       	brcs	.+40     	; 0x682 <__fixunssfsi+0x38>
+ 65a:	d1 f0       	breq	.+52     	; 0x690 <__fixunssfsi+0x46>
+ 65c:	66 0f       	add	r22, r22
+ 65e:	77 1f       	adc	r23, r23
+ 660:	88 1f       	adc	r24, r24
+ 662:	99 1f       	adc	r25, r25
+ 664:	1a f0       	brmi	.+6      	; 0x66c <__fixunssfsi+0x22>
+ 666:	ba 95       	dec	r27
+ 668:	c9 f7       	brne	.-14     	; 0x65c <__fixunssfsi+0x12>
+ 66a:	12 c0       	rjmp	.+36     	; 0x690 <__fixunssfsi+0x46>
+ 66c:	b1 30       	cpi	r27, 0x01	; 1
+ 66e:	81 f0       	breq	.+32     	; 0x690 <__fixunssfsi+0x46>
+ 670:	62 d0       	rcall	.+196    	; 0x736 <__fp_zero>
+ 672:	b1 e0       	ldi	r27, 0x01	; 1
+ 674:	08 95       	ret
+ 676:	5f c0       	rjmp	.+190    	; 0x736 <__fp_zero>
+ 678:	67 2f       	mov	r22, r23
+ 67a:	78 2f       	mov	r23, r24
+ 67c:	88 27       	eor	r24, r24
+ 67e:	b8 5f       	subi	r27, 0xF8	; 248
+ 680:	39 f0       	breq	.+14     	; 0x690 <__fixunssfsi+0x46>
+ 682:	b9 3f       	cpi	r27, 0xF9	; 249
+ 684:	cc f3       	brlt	.-14     	; 0x678 <__fixunssfsi+0x2e>
+ 686:	86 95       	lsr	r24
+ 688:	77 95       	ror	r23
+ 68a:	67 95       	ror	r22
+ 68c:	b3 95       	inc	r27
+ 68e:	d9 f7       	brne	.-10     	; 0x686 <__fixunssfsi+0x3c>
+ 690:	3e f4       	brtc	.+14     	; 0x6a0 <__fixunssfsi+0x56>
+ 692:	90 95       	com	r25
+ 694:	80 95       	com	r24
+ 696:	70 95       	com	r23
+ 698:	61 95       	neg	r22
+ 69a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 69c:	8f 4f       	sbci	r24, 0xFF	; 255
+ 69e:	9f 4f       	sbci	r25, 0xFF	; 255
+ 6a0:	08 95       	ret
+
+000006a2 <__fp_inf>:
+ 6a2:	97 f9       	bld	r25, 7
+ 6a4:	9f 67       	ori	r25, 0x7F	; 127
+ 6a6:	80 e8       	ldi	r24, 0x80	; 128
+ 6a8:	70 e0       	ldi	r23, 0x00	; 0
+ 6aa:	60 e0       	ldi	r22, 0x00	; 0
+ 6ac:	08 95       	ret
+
+000006ae <__fp_nan>:
+ 6ae:	9f ef       	ldi	r25, 0xFF	; 255
+ 6b0:	80 ec       	ldi	r24, 0xC0	; 192
+ 6b2:	08 95       	ret
+
+000006b4 <__fp_pscA>:
+ 6b4:	00 24       	eor	r0, r0
+ 6b6:	0a 94       	dec	r0
+ 6b8:	16 16       	cp	r1, r22
+ 6ba:	17 06       	cpc	r1, r23
+ 6bc:	18 06       	cpc	r1, r24
+ 6be:	09 06       	cpc	r0, r25
+ 6c0:	08 95       	ret
+
+000006c2 <__fp_pscB>:
+ 6c2:	00 24       	eor	r0, r0
+ 6c4:	0a 94       	dec	r0
+ 6c6:	12 16       	cp	r1, r18
+ 6c8:	13 06       	cpc	r1, r19
+ 6ca:	14 06       	cpc	r1, r20
+ 6cc:	05 06       	cpc	r0, r21
+ 6ce:	08 95       	ret
+
+000006d0 <__fp_round>:
+ 6d0:	09 2e       	mov	r0, r25
+ 6d2:	03 94       	inc	r0
+ 6d4:	00 0c       	add	r0, r0
+ 6d6:	11 f4       	brne	.+4      	; 0x6dc <__fp_round+0xc>
+ 6d8:	88 23       	and	r24, r24
+ 6da:	52 f0       	brmi	.+20     	; 0x6f0 <__fp_round+0x20>
+ 6dc:	bb 0f       	add	r27, r27
+ 6de:	40 f4       	brcc	.+16     	; 0x6f0 <__fp_round+0x20>
+ 6e0:	bf 2b       	or	r27, r31
+ 6e2:	11 f4       	brne	.+4      	; 0x6e8 <__fp_round+0x18>
+ 6e4:	60 ff       	sbrs	r22, 0
+ 6e6:	04 c0       	rjmp	.+8      	; 0x6f0 <__fp_round+0x20>
+ 6e8:	6f 5f       	subi	r22, 0xFF	; 255
+ 6ea:	7f 4f       	sbci	r23, 0xFF	; 255
+ 6ec:	8f 4f       	sbci	r24, 0xFF	; 255
+ 6ee:	9f 4f       	sbci	r25, 0xFF	; 255
+ 6f0:	08 95       	ret
+
+000006f2 <__fp_split3>:
+ 6f2:	57 fd       	sbrc	r21, 7
+ 6f4:	90 58       	subi	r25, 0x80	; 128
+ 6f6:	44 0f       	add	r20, r20
+ 6f8:	55 1f       	adc	r21, r21
+ 6fa:	59 f0       	breq	.+22     	; 0x712 <__fp_splitA+0x10>
+ 6fc:	5f 3f       	cpi	r21, 0xFF	; 255
+ 6fe:	71 f0       	breq	.+28     	; 0x71c <__fp_splitA+0x1a>
+ 700:	47 95       	ror	r20
+
+00000702 <__fp_splitA>:
+ 702:	88 0f       	add	r24, r24
+ 704:	97 fb       	bst	r25, 7
+ 706:	99 1f       	adc	r25, r25
+ 708:	61 f0       	breq	.+24     	; 0x722 <__fp_splitA+0x20>
+ 70a:	9f 3f       	cpi	r25, 0xFF	; 255
+ 70c:	79 f0       	breq	.+30     	; 0x72c <__fp_splitA+0x2a>
+ 70e:	87 95       	ror	r24
+ 710:	08 95       	ret
+ 712:	12 16       	cp	r1, r18
+ 714:	13 06       	cpc	r1, r19
+ 716:	14 06       	cpc	r1, r20
+ 718:	55 1f       	adc	r21, r21
+ 71a:	f2 cf       	rjmp	.-28     	; 0x700 <__fp_split3+0xe>
+ 71c:	46 95       	lsr	r20
+ 71e:	f1 df       	rcall	.-30     	; 0x702 <__fp_splitA>
+ 720:	08 c0       	rjmp	.+16     	; 0x732 <__fp_splitA+0x30>
+ 722:	16 16       	cp	r1, r22
+ 724:	17 06       	cpc	r1, r23
+ 726:	18 06       	cpc	r1, r24
+ 728:	99 1f       	adc	r25, r25
+ 72a:	f1 cf       	rjmp	.-30     	; 0x70e <__fp_splitA+0xc>
+ 72c:	86 95       	lsr	r24
+ 72e:	71 05       	cpc	r23, r1
+ 730:	61 05       	cpc	r22, r1
+ 732:	08 94       	sec
+ 734:	08 95       	ret
+
+00000736 <__fp_zero>:
+ 736:	e8 94       	clt
+
+00000738 <__fp_szero>:
+ 738:	bb 27       	eor	r27, r27
+ 73a:	66 27       	eor	r22, r22
+ 73c:	77 27       	eor	r23, r23
+ 73e:	cb 01       	movw	r24, r22
+ 740:	97 f9       	bld	r25, 7
+ 742:	08 95       	ret
+
+00000744 <__mulsf3>:
+ 744:	0b d0       	rcall	.+22     	; 0x75c <__mulsf3x>
+ 746:	c4 cf       	rjmp	.-120    	; 0x6d0 <__fp_round>
+ 748:	b5 df       	rcall	.-150    	; 0x6b4 <__fp_pscA>
+ 74a:	28 f0       	brcs	.+10     	; 0x756 <__mulsf3+0x12>
+ 74c:	ba df       	rcall	.-140    	; 0x6c2 <__fp_pscB>
+ 74e:	18 f0       	brcs	.+6      	; 0x756 <__mulsf3+0x12>
+ 750:	95 23       	and	r25, r21
+ 752:	09 f0       	breq	.+2      	; 0x756 <__mulsf3+0x12>
+ 754:	a6 cf       	rjmp	.-180    	; 0x6a2 <__fp_inf>
+ 756:	ab cf       	rjmp	.-170    	; 0x6ae <__fp_nan>
+ 758:	11 24       	eor	r1, r1
+ 75a:	ee cf       	rjmp	.-36     	; 0x738 <__fp_szero>
+
+0000075c <__mulsf3x>:
+ 75c:	ca df       	rcall	.-108    	; 0x6f2 <__fp_split3>
+ 75e:	a0 f3       	brcs	.-24     	; 0x748 <__mulsf3+0x4>
+
+00000760 <__mulsf3_pse>:
+ 760:	95 9f       	mul	r25, r21
+ 762:	d1 f3       	breq	.-12     	; 0x758 <__mulsf3+0x14>
+ 764:	95 0f       	add	r25, r21
+ 766:	50 e0       	ldi	r21, 0x00	; 0
+ 768:	55 1f       	adc	r21, r21
+ 76a:	62 9f       	mul	r22, r18
+ 76c:	f0 01       	movw	r30, r0
+ 76e:	72 9f       	mul	r23, r18
+ 770:	bb 27       	eor	r27, r27
+ 772:	f0 0d       	add	r31, r0
+ 774:	b1 1d       	adc	r27, r1
+ 776:	63 9f       	mul	r22, r19
+ 778:	aa 27       	eor	r26, r26
+ 77a:	f0 0d       	add	r31, r0
+ 77c:	b1 1d       	adc	r27, r1
+ 77e:	aa 1f       	adc	r26, r26
+ 780:	64 9f       	mul	r22, r20
+ 782:	66 27       	eor	r22, r22
+ 784:	b0 0d       	add	r27, r0
+ 786:	a1 1d       	adc	r26, r1
+ 788:	66 1f       	adc	r22, r22
+ 78a:	82 9f       	mul	r24, r18
+ 78c:	22 27       	eor	r18, r18
+ 78e:	b0 0d       	add	r27, r0
+ 790:	a1 1d       	adc	r26, r1
+ 792:	62 1f       	adc	r22, r18
+ 794:	73 9f       	mul	r23, r19
+ 796:	b0 0d       	add	r27, r0
+ 798:	a1 1d       	adc	r26, r1
+ 79a:	62 1f       	adc	r22, r18
+ 79c:	83 9f       	mul	r24, r19
+ 79e:	a0 0d       	add	r26, r0
+ 7a0:	61 1d       	adc	r22, r1
+ 7a2:	22 1f       	adc	r18, r18
+ 7a4:	74 9f       	mul	r23, r20
+ 7a6:	33 27       	eor	r19, r19
+ 7a8:	a0 0d       	add	r26, r0
+ 7aa:	61 1d       	adc	r22, r1
+ 7ac:	23 1f       	adc	r18, r19
+ 7ae:	84 9f       	mul	r24, r20
+ 7b0:	60 0d       	add	r22, r0
+ 7b2:	21 1d       	adc	r18, r1
+ 7b4:	82 2f       	mov	r24, r18
+ 7b6:	76 2f       	mov	r23, r22
+ 7b8:	6a 2f       	mov	r22, r26
+ 7ba:	11 24       	eor	r1, r1
+ 7bc:	9f 57       	subi	r25, 0x7F	; 127
+ 7be:	50 40       	sbci	r21, 0x00	; 0
+ 7c0:	8a f0       	brmi	.+34     	; 0x7e4 <__mulsf3_pse+0x84>
+ 7c2:	e1 f0       	breq	.+56     	; 0x7fc <__mulsf3_pse+0x9c>
+ 7c4:	88 23       	and	r24, r24
+ 7c6:	4a f0       	brmi	.+18     	; 0x7da <__mulsf3_pse+0x7a>
+ 7c8:	ee 0f       	add	r30, r30
+ 7ca:	ff 1f       	adc	r31, r31
+ 7cc:	bb 1f       	adc	r27, r27
+ 7ce:	66 1f       	adc	r22, r22
+ 7d0:	77 1f       	adc	r23, r23
+ 7d2:	88 1f       	adc	r24, r24
+ 7d4:	91 50       	subi	r25, 0x01	; 1
+ 7d6:	50 40       	sbci	r21, 0x00	; 0
+ 7d8:	a9 f7       	brne	.-22     	; 0x7c4 <__mulsf3_pse+0x64>
+ 7da:	9e 3f       	cpi	r25, 0xFE	; 254
+ 7dc:	51 05       	cpc	r21, r1
+ 7de:	70 f0       	brcs	.+28     	; 0x7fc <__mulsf3_pse+0x9c>
+ 7e0:	60 cf       	rjmp	.-320    	; 0x6a2 <__fp_inf>
+ 7e2:	aa cf       	rjmp	.-172    	; 0x738 <__fp_szero>
+ 7e4:	5f 3f       	cpi	r21, 0xFF	; 255
+ 7e6:	ec f3       	brlt	.-6      	; 0x7e2 <__mulsf3_pse+0x82>
+ 7e8:	98 3e       	cpi	r25, 0xE8	; 232
+ 7ea:	dc f3       	brlt	.-10     	; 0x7e2 <__mulsf3_pse+0x82>
+ 7ec:	86 95       	lsr	r24
+ 7ee:	77 95       	ror	r23
+ 7f0:	67 95       	ror	r22
+ 7f2:	b7 95       	ror	r27
+ 7f4:	f7 95       	ror	r31
+ 7f6:	e7 95       	ror	r30
+ 7f8:	9f 5f       	subi	r25, 0xFF	; 255
+ 7fa:	c1 f7       	brne	.-16     	; 0x7ec <__mulsf3_pse+0x8c>
+ 7fc:	fe 2b       	or	r31, r30
+ 7fe:	88 0f       	add	r24, r24
+ 800:	91 1d       	adc	r25, r1
+ 802:	96 95       	lsr	r25
+ 804:	87 95       	ror	r24
+ 806:	97 f9       	bld	r25, 7
+ 808:	08 95       	ret
+
+0000080a <__udivmodqi4>:
+ 80a:	99 1b       	sub	r25, r25
+ 80c:	79 e0       	ldi	r23, 0x09	; 9
+ 80e:	04 c0       	rjmp	.+8      	; 0x818 <__udivmodqi4_ep>
+
+00000810 <__udivmodqi4_loop>:
+ 810:	99 1f       	adc	r25, r25
+ 812:	96 17       	cp	r25, r22
+ 814:	08 f0       	brcs	.+2      	; 0x818 <__udivmodqi4_ep>
+ 816:	96 1b       	sub	r25, r22
+
+00000818 <__udivmodqi4_ep>:
+ 818:	88 1f       	adc	r24, r24
+ 81a:	7a 95       	dec	r23
+ 81c:	c9 f7       	brne	.-14     	; 0x810 <__udivmodqi4_loop>
+ 81e:	80 95       	com	r24
+ 820:	08 95       	ret
+
+00000822 <_exit>:
+ 822:	f8 94       	cli
+
+00000824 <__stop_program>:
+ 824:	ff cf       	rjmp	.-2      	; 0x824 <__stop_program>
