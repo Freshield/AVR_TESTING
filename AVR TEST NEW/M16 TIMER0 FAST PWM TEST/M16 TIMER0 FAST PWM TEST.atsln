@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "M16 TIMER0 FAST PWM TEST", "M16 TIMER0 FAST PWM TEST\M16 TIMER0 FAST PWM TEST.cppproj", "{E1197DE4-BB0A-4D43-AC79-1DD9E0031974}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1197DE4-BB0A-4D43-AC79-1DD9E0031974}.Debug|AVR.ActiveCfg = Debug|AVR
+		{E1197DE4-BB0A-4D43-AC79-1DD9E0031974}.Debug|AVR.Build.0 = Debug|AVR
+		{E1197DE4-BB0A-4D43-AC79-1DD9E0031974}.Release|AVR.ActiveCfg = Release|AVR
+		{E1197DE4-BB0A-4D43-AC79-1DD9E0031974}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
