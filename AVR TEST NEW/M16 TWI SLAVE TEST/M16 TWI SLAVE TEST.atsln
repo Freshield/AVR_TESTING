@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "M16 TWI SLAVE TEST", "M16 TWI SLAVE TEST\M16 TWI SLAVE TEST.cppproj", "{46E6FCBA-8F3E-4D55-A4F8-D72B5976BD16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46E6FCBA-8F3E-4D55-A4F8-D72B5976BD16}.Debug|AVR.ActiveCfg = Debug|AVR
+		{46E6FCBA-8F3E-4D55-A4F8-D72B5976BD16}.Debug|AVR.Build.0 = Debug|AVR
+		{46E6FCBA-8F3E-4D55-A4F8-D72B5976BD16}.Release|AVR.ActiveCfg = Release|AVR
+		{46E6FCBA-8F3E-4D55-A4F8-D72B5976BD16}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
